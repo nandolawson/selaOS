@@ -10,7 +10,6 @@
 }:
 let
   hardware = flag: builtins.match ".*${flag}.*" (builtins.getEnv "HARDWARE") != null;
-  userList = configuration.User;
 in
 assert builtins.getEnv "EFI_UUID" != "" || throw "EFI_UUID fehlt!";
 assert (hardware "cpuIntel" || hardware "cpuAmd") || throw "CPU-Erkennung fehlgeschlagen!";
@@ -641,7 +640,7 @@ assert (hardware "gpuAmd" || hardware "gpuIntel" || hardware "gpuNvidia") || thr
         ++ (lib.optionals (hardware "gpuNvidia") [ "nvidia" ])
         ++ [ "modesetting" ];
       xkb = {
-        layout = "${configuration.General.keyboardLayout or "en"}";
+        layout = "en"
         variant = "";
       };
     };
@@ -662,7 +661,10 @@ assert (hardware "gpuAmd" || hardware "gpuIntel" || hardware "gpuNvidia") || thr
     "L+ %h/.var - - - - /var/lib/flatpak/user-data/%u"
     "L+ /var/lib/flatpak/overrides/global - - - - socket=wayland,fallback-x11;device=dri;filesystems=home;"
   ];
-  time.timeZone = configuration.General.timeZone;
+  time = {
+    hardwareClockInLocalTime = false;
+    timeZone = null;
+  };
   users.mutableUsers = true;
   xdg.portal = {
     enable = true;
