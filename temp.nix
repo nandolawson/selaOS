@@ -1,3 +1,4 @@
+{ pkgs, lib, ... }:
 let
   candy-icons = pkgs.stdenv.mkDerivation {
     pname = "candy-icons";
