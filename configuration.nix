@@ -648,10 +648,10 @@ assert (hardware "gpuAmd" || hardware "gpuIntel" || hardware "gpuNvidia") || thr
       distroId = lib.toLower name;
       label = "${name} ${version}";
     };
-    osRelease = {
-      NAME = "${name}";
-      VERSION = "${version}";
-    };
+#    osRelease = {
+#      NAME = "${name}";
+#      VERSION = "${version}";
+#    };
   };
   systemd.tmpfiles.rules = [
     "d /var/lib/flatpak/user-data 0775 root users -"
