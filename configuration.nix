@@ -631,7 +631,7 @@ assert (hardware "gpuAmd" || hardware "gpuIntel" || hardware "gpuNvidia") || thr
         ++ (lib.optionals (hardware "gpuNvidia") [ "nvidia" ])
         ++ [ "modesetting" ];
       xkb = {
-        layout = "en";
+        layout = "de";
         variant = "";
       };
     };
@@ -660,7 +660,7 @@ assert (hardware "gpuAmd" || hardware "gpuIntel" || hardware "gpuNvidia") || thr
   ];
   time = {
     hardwareClockInLocalTime = false;
-    timeZone = null;
+    timeZone = "Europe/Berlin;
   };
   users.mutableUsers = true;
   xdg.portal = {
@@ -671,5 +671,10 @@ assert (hardware "gpuAmd" || hardware "gpuIntel" || hardware "gpuNvidia") || thr
     enable = true;
     memoryPercent = 50;
     priority = 100;
+  };
+  i18n.defaultLocale = "de_DE.UTF-8";
+  console = {
+    font = "Lat2-Terminus16";
+    keyMap = "de"; # Oder "de-latin1"
   };
 }
