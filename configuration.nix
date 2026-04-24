@@ -646,7 +646,7 @@ assert (hardware "gpuAmd" || hardware "gpuIntel" || hardware "gpuNvidia") || thr
     nixos = {
       distroName = "${name}";
       distroId = lib.toLower name;
-      label = "${name} ${version}";
+      label = "${name}-${version}";
     };
 #    osRelease = {
 #      NAME = "${name}";
