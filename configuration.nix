@@ -474,7 +474,7 @@ assert (hardware "gpuAmd" || hardware "gpuIntel" || hardware "gpuNvidia") || thr
     };
 
   };
-  console.keyMap = "en";
+  console.keyMap = "de";
   documentation.nixos = {
       checkRedirects = true;
       enable = false;
@@ -673,8 +673,4 @@ assert (hardware "gpuAmd" || hardware "gpuIntel" || hardware "gpuNvidia") || thr
     priority = 100;
   };
   i18n.defaultLocale = "de_DE.UTF-8";
-  console = {
-    font = "Lat2-Terminus16";
-    keyMap = "de";
-  };
 }
