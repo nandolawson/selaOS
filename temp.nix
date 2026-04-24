@@ -37,11 +37,12 @@ let
   };
 in
 {
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = [
     candy-icons
     whitesur-kde
-    libsForQt5.qtstyleplugin-kvantum
-    libsForQt5.kvantum
+    pkgs.qtstyleplugin-kvantum
+    pkgs.libsForQt5.qtstyleplugin-kvantum
+    pkgs.kvantum
   ];
 
   environment.etc = {
