@@ -652,7 +652,6 @@ assert (hardware "gpuAmd" || hardware "gpuIntel" || hardware "gpuNvidia") || thr
       NAME = "${name}";
       VERSION = "${version}";
     };
-};
   };
   systemd.tmpfiles.rules = [
     "d /var/lib/flatpak/user-data 0775 root users -"
