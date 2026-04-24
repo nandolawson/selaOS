@@ -578,10 +578,6 @@ assert (hardware "gpuAmd" || hardware "gpuIntel" || hardware "gpuNvidia") || thr
       };
     };
   };
-  i18n = {
-    defaultLocale = null;
-    inputMethod.enabled = null;
-  };
   networking = {
     hostName = "nixos";
     networkmanager.enable = true;
