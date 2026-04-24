@@ -474,7 +474,7 @@ assert (hardware "gpuAmd" || hardware "gpuIntel" || hardware "gpuNvidia") || thr
     };
 
   };
-  console.keyMap = "${configuration.General.keyboardLayout or "en"}";
+  console.keyMap = "en";
   documentation.nixos = {
       checkRedirects = true;
       enable = false;
@@ -578,7 +578,10 @@ assert (hardware "gpuAmd" || hardware "gpuIntel" || hardware "gpuNvidia") || thr
       };
     };
   };
-  i18n.defaultLocale = "${configuration.General.language or "en_EN"}.UTF-8";
+  i18n = {
+    defaultLocale = null;
+    inputMethod.enabled = null;
+  };
   networking = {
     hostName = "nixos";
     networkmanager.enable = true;
@@ -635,12 +638,13 @@ assert (hardware "gpuAmd" || hardware "gpuIntel" || hardware "gpuNvidia") || thr
       pulse.enable = true;
     };
     xserver = {
+      exportConfiguration = true;
       videoDrivers =
         (lib.optionals (hardware "gpuAmd") [ "amdgpu" ])
         ++ (lib.optionals (hardware "gpuNvidia") [ "nvidia" ])
         ++ [ "modesetting" ];
       xkb = {
-        layout = "en"
+        layout = "en";
         variant = "";
       };
     };
