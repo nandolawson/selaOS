@@ -41,7 +41,7 @@ in
     candy-icons
     whitesur-kde
     libsForQt5.qtstyleplugin-kvantum
-    kvantum
+    libsForQt5.kvantum
   ];
 
   environment.etc = {
