@@ -486,15 +486,6 @@ assert (hardware "gpuAmd" || hardware "gpuIntel" || hardware "gpuNvidia") || thr
           warningsAreErrors = true;
       };
   };
-  environment = {
-    etc."os-release".text = lib.mkForce ''
-      ANSI_COLOR="0;34"
-      ID="${lib.toLower name}"
-      ID_LIKE="nixos"
-      NAME="${name}"
-      PRETTY_NAME="${name} ${version}"
-    '';
-  };
   fileSystems = {
     "/" = {
       device = "/dev/disk/by-label/${name}";
@@ -651,10 +642,17 @@ assert (hardware "gpuAmd" || hardware "gpuIntel" || hardware "gpuNvidia") || thr
       size = 8192;
     }
   ];
-  system.nixos = {
-    distroName = "${name}";
-    distroId = lib.toLower name;
-    label = "${name}-v${version}";
+  system.= {
+    nixos = {
+      distroName = "${name}";
+      distroId = lib.toLower name;
+      label = "${name} ${version}";
+    };
+    osRelease = {
+      NAME = "${name}";
+      VERSION = "${version}";
+    };
+};
   };
   systemd.tmpfiles.rules = [
     "d /var/lib/flatpak/user-data 0775 root users -"
