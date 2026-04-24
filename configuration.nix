@@ -660,7 +660,7 @@ assert (hardware "gpuAmd" || hardware "gpuIntel" || hardware "gpuNvidia") || thr
   ];
   time = {
     hardwareClockInLocalTime = false;
-    timeZone = "Europe/Berlin;
+    timeZone = "Europe/Berlin";
   };
   users.mutableUsers = true;
   xdg.portal = {
@@ -675,6 +675,6 @@ assert (hardware "gpuAmd" || hardware "gpuIntel" || hardware "gpuNvidia") || thr
   i18n.defaultLocale = "de_DE.UTF-8";
   console = {
     font = "Lat2-Terminus16";
-    keyMap = "de"; # Oder "de-latin1"
+    keyMap = "de";
   };
 }
