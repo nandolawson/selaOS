@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="silver" viewBox="-1 -1 2 2">
+  <defs>
+    <path id="b" d="m0 0-1 1v-2Z"/>
+    <mask id="a">
+      <rect width="2" height="2" x="-1" y="-1" fill="#fff" rx=".5"/>
+      <path fill="#000" d="M.3968-1h.5v.42h-.5z"/>
+      <circle cx=".3968" cy="-.75" r=".25" fill="#fff"/>
+      <path fill="#000" d="M.3968.58h.5V1h-.5z"/>
+      <circle cx=".3968" cy=".75" r=".25" fill="#fff"/>
+    </mask>
+  </defs>
+  <g mask="url(#a)" opacity="80%">
+    <use href="#b"/>
+    <g opacity="80%">
+      <use href="#b" transform="rotate(90)"/>
+      <use href="#b" transform="rotate(-90)"/>
+    </g>
+  </g>
+</svg>
