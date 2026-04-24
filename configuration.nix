@@ -642,7 +642,7 @@ assert (hardware "gpuAmd" || hardware "gpuIntel" || hardware "gpuNvidia") || thr
       size = 8192;
     }
   ];
-  system.= {
+  system = {
     nixos = {
       distroName = "${name}";
       distroId = lib.toLower name;
