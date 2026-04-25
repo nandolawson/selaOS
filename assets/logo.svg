@@ -1,19 +1,30 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="silver" viewBox="-1 -1 2 2">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200" viewBox="-100 -100 200 200">
+  <style>
+    #rotation, #zoom, #fadein { 
+      display: none; 
+    }
+    :target { 
+      display: block !important; 
+    }
+    #static { display: block; }
+    :target ~ #static { display: none; }
+  </style>
   <defs>
-    <path id="b" d="m0 0-1 1v-2Z"/>
-    <mask id="a">
-      <rect width="2" height="2" x="-1" y="-1" fill="#fff" rx=".5"/>
-      <path fill="#000" d="M.3968-1h.5v.42h-.5z"/>
-      <circle cx=".3968" cy="-.75" r=".25" fill="#fff"/>
-      <path fill="#000" d="M.3968.58h.5V1h-.5z"/>
-      <circle cx=".3968" cy=".75" r=".25" fill="#fff"/>
-    </mask>
-  </defs>
-  <g mask="url(#a)" opacity="80%">
-    <use href="#b"/>
-    <g opacity="80%">
-      <use href="#b" transform="rotate(90)"/>
-      <use href="#b" transform="rotate(-90)"/>
+    <g id="logo" fill="none" stroke="white" stroke-width="1pt">
+      <circle cx="0" cy="0" r="90" fill="white" fill-opacity=".2"/>
+      <circle cx="0" cy="0" r="90" stroke-dasharray="283 283" stroke-dashoffset="-141.5" transform="matrix(.5 0 0 .5 0 -45)"/>
+      <circle cx="0" cy="0" r="90" stroke-dasharray="283 283" stroke-dashoffset="141.5" transform="matrix(.5 0 0 .5 0 45)"/>
     </g>
-  </g>
+  </defs>
+  <path fill="green" d="M-100-100h200v200h-200z"/>
+  <use id="rotation" href="#logo">
+    <animateTransform attributeName="transform" dur="1s" from="0" repeatCount="indefinite" to="-180" type="rotate"/>
+  </use>
+  <use id="zoom" href="#logo">
+    <animateTransform fill="freeze" attributeName="transform" dur=".5s" from="0" to="1" type="scale"/>
+  </use>
+  <use id="fadein" href="#logo">
+    <animate fill="freeze" attributeName="opacity" dur="0.25s" from="0" to="1"/>
+  </use>
+  <use id="static" href="#logo"/>
 </svg>
