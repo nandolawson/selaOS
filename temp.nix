@@ -2,7 +2,6 @@
 {
   environment.systemPackages = with pkgs; [
     sweet
-    kdePackages.icons-in-terminal
     kdePackages.qtstyleplugin-kvantum
   ];
   qt = {
