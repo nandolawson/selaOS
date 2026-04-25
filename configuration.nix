@@ -210,6 +210,8 @@ assert (hardware "gpuAmd" || hardware "gpuIntel" || hardware "gpuNvidia") || thr
     kernelPackages = pkgs.linuxPackages_zen;
     kernelPatches = [ ];
     kernelParams = [
+      "lsm=landlock,lockdown,yama,apparmor,bpf"
+      "lockdown=confidentiality"
       "pci=pcie_bus_perf"
       "preempt=full"
       "quiet"
@@ -616,6 +618,7 @@ assert (hardware "gpuAmd" || hardware "gpuIntel" || hardware "gpuNvidia") || thr
         }
       ];
     };
+    fwupd.enable = true;
     pipewire = {
       alsa = {
         enable = true;
