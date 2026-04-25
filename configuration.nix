@@ -212,6 +212,8 @@ assert (hardware "gpuAmd" || hardware "gpuIntel" || hardware "gpuNvidia") || thr
     kernelParams = [
       "lsm=landlock,lockdown,yama,apparmor,bpf"
       "lockdown=confidentiality"
+      "page_alloc.shuffle=1"
+      "slub_debug=FZP"
       "pci=pcie_bus_perf"
       "preempt=full"
       "quiet"
