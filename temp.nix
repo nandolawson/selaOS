@@ -10,9 +10,12 @@ let
       gawk
       findutils
       libnotify
+      git
+      nixos-rebuild
     ];
     text = ''
       detect_hardware() {
+        HARDWARE=""
         for pair in "AuthenticAMD:Amd" "GenuineIntel:Intel"; do
           [[ "$(grep -m 1 "vendor_id" /proc/cpuinfo | awk '{print $NF}')" == "''${pair%%:*}" ]] && \
           HARDWARE+=" cpu''${pair#*:}"
@@ -47,6 +50,22 @@ let
         fi
       }
 
+      update_system() {
+        detect_hardware
+        EFI_UUID=$(findmnt -no UUID /boot)
+        export EFI_UUID
+        export HARDWARE
+
+        if sudo nixos-rebuild switch --flake "github:nandolawson/selaOS?ref=developer#$(uname -m)" --impure --refresh; then
+          echo "------------------------------------------"
+          echo "✓ System erfolgreich aktualisiert!"
+        else
+          echo "------------------------------------------"
+          echo "✗ Fehler beim Rebuild!"
+          exit 1
+        fi
+      }
+
       notification() {
         echo "Hardware verändert"
       }
@@ -57,6 +76,7 @@ Usage: selaos [COMMAND]
 
 Commands:
   hardware  Run hardware detection
+  update    Update the system via flake
   help      Show this help
 EOF
       }
@@ -65,6 +85,9 @@ EOF
           hardware)
               shift
               detect_hardware "$@"
+              ;;
+          update)
+              update_system
               ;;
           help)
               show_help
