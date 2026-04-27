@@ -2,7 +2,7 @@
 
 let
   selaos-logic = pkgs.writeShellApplication {
-    name = "selaOS";
+    name = "selaos";
     runtimeInputs = with pkgs; [
       coreutils
       pciutils
@@ -50,7 +50,7 @@ let
       notification() {
         echo "Hardware verändert"
       }
-# #
+
       show_help() {
           cat << EOF
 Usage: selaos [COMMAND]
@@ -60,6 +60,7 @@ Commands:
   help      Show this help
 EOF
       }
+
       case "''${1:-help}" in
           hardware)
               shift
@@ -75,14 +76,7 @@ EOF
       esac
     '';
   };
-
 in
-pkgs.stdenv.mkDerivation {
-  pname = "selaOS";
-  version = "0.1.6";
-  phases = [ "installPhase" ];
-  installPhase = ''
-    mkdir -p $out/bin
-    ln -s ${selaos-logic}/bin/selaos $out/bin/selaos
-  '';
+{
+  environment.systemPackages = [ selaos-logic ];
 }
