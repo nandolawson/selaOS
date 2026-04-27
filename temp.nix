@@ -52,11 +52,13 @@ let
 
       update_system() {
         detect_hardware
-        EFI_UUID=$(findmnt -no UUID /boot)
-        export EFI_UUID
-        export HARDWARE
+        UUID_VAL=$(findmnt -no UUID /boot)
 
-        if sudo nixos-rebuild switch --flake "github:nandolawson/selaOS?ref=developer#$(uname -m)" --impure --refresh; then
+        # Wir geben die Variablen explizit an sudo weiter
+        if sudo EFI_UUID="$UUID_VAL" HARDWARE="$HARDWARE" \
+           nixos-rebuild switch \
+           --flake "github:nandolawson/selaOS?ref=developer#$(uname -m)" \
+           --impure --refresh; then
           echo "------------------------------------------"
           echo "✓ System erfolgreich aktualisiert!"
         else
@@ -87,7 +89,6 @@ EOF
               detect_hardware "$@"
               ;;
           update)
-              detect_hardware
               update_system
               ;;
           help)
