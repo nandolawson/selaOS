@@ -87,6 +87,7 @@ EOF
               detect_hardware "$@"
               ;;
           update)
+              detect_hardware
               update_system
               ;;
           help)
