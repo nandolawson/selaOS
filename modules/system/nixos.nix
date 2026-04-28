@@ -1,4 +1,4 @@
-{ lib, name, version, .,, }:
+{ lib, name, version, ... }:
 {
     system.nixos = {
       codeName = "Xantusia";
