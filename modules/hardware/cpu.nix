@@ -9,5 +9,5 @@
             npu.enable = false;
             updateMicrocode = config.hardware.enableRedistributableFirmware;
         };
-    }
+    };
 }
