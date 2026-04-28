@@ -4,7 +4,7 @@ detect_hardware() {
     local notify=false
     local OPTIND opt
     while getopts "svn" opt; do
-        case "''${opt}" in
+        case "${opt}" in
             s) show=true ;;
             v) save=true ;;
             n) notify=true ;;
@@ -14,18 +14,18 @@ detect_hardware() {
     shift "$((OPTIND-1))"
     HARDWARE=""
     for pair in "AuthenticAMD:Amd" "GenuineIntel:Intel"; do
-        [[ "$(grep -m 1 "vendor_id" /proc/cpuinfo | awk '{print $NF}')" == "''${pair%%:*}" ]] && \
-        HARDWARE+=" cpu''${pair#*:}"
+        [[ "$(grep -m 1 "vendor_id" /proc/cpuinfo | awk '{print $NF}')" == "${pair%%:*}" ]] && \
+        HARDWARE+=" cpu${pair#*:}"
     done
     
     for pair in "1002:gpuAmd" "10de:gpuNvidia" "8086:gpuIntel"; do
-        [[ "$(grep -l "0x0300" /sys/bus/pci/devices/*/class | sed 's/\/class//' | xargs -I {} cat {}/vendor | cut -c 3-6)" == *"''${pair%%:*}"* ]] && \
-        HARDWARE+=" ''${pair#*:}"
+        [[ "$(grep -l "0x0300" /sys/bus/pci/devices/*/class | sed 's/\/class//' | xargs -I {} cat {}/vendor | cut -c 3-6)" == *"${pair%%:*}"* ]] && \
+        HARDWARE+=" ${pair#*:}"
     done
     
     for pair in "0106:storageSata" "0108:storageNvme"; do
-        [[ "$(cat /sys/bus/pci/devices/*/class | cut -c 3-6)" == *"''${pair%%:*}"* ]] && \
-        HARDWARE+=" ''${pair#*:}"
+        [[ "$(cat /sys/bus/pci/devices/*/class | cut -c 3-6)" == *"${pair%%:*}"* ]] && \
+        HARDWARE+=" ${pair#*:}"
     done
     
     HARDWARE=$(echo "$HARDWARE" | xargs -n1 | sort -u | xargs)
