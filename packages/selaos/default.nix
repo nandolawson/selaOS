@@ -1,10 +1,11 @@
+Hab es selber hinbekommen mit folgendem Script:
 { lib, pkgs, ... }:
 
 let
 functions = lib.concatMapStringsSep "\n" 
   (name: ''
     # shellcheck disable=SC1090,SC1091
-    source "${./functions/${name}.sh}"
+    source "${./scripts/${name}.sh}"
   '')
   [
     "detect_hardware"
@@ -28,17 +29,8 @@ functions = lib.concatMapStringsSep "\n"
       ${functions}
       case "''${1:-help}" in
           hardware)
-            ARGS=""
-              for arg in "$@"; do
-                case "$arg" in
-                  --show) ARGS+=" -s" ;;
-                  --save) ARGS+=" -v" ;;
-                  --notification) ARGS+=" -n" ;;
-                  *) ARGS+=" $arg" ;;
-                esac
-              done
-              # shellcheck disable=SC2086
-              detect_hardware $ARGS
+              shift
+              detect_hardware "$@"
               ;;
           update)
               update_system
@@ -55,8 +47,5 @@ functions = lib.concatMapStringsSep "\n"
   };
 in
 {
-  environment = {
-    #environment.etc."bash_completion.d/selaos".source = ./scripts/completion.sh;
-    systemPackages = [ selaos ];
-  };
+  environment.systemPackages = [ selaos ];
 }
