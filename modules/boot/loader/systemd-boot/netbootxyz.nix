@@ -1,4 +1,4 @@
-{ configuraton, ... }:
+{ configuration, ... }:
 {
     boot.loader.systemd-boot.netbootxyz = {
         enable = {
