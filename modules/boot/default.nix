@@ -17,7 +17,7 @@
       ./iscsi-initiator.nix
       ./kernel.nix
       ./plymouth.nix
-    ]
+    ];
   boot = {
     bcache.enable = true;
     bcachefs.package = pkgs.bcachefs-tools;
