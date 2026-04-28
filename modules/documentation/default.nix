@@ -1,8 +1,8 @@
 { ... }:
 {
     imports = [
-        ./nixos.nix
-    ]
+        ./nixos
+    ];
     documentation = {
 
     };
