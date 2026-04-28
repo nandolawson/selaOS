@@ -1,12 +1,8 @@
 {
   config,
-  configuration,
   lib,
   hardware,
-  name,
   pkgs,
-  self,
-  version,
   ...
 }:
 {
