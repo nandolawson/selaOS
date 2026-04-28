@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, hardware, pkgs, ... }:
 {
     boot.initrd = {
       allowMissingModules = false;
