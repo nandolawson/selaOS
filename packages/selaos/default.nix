@@ -5,7 +5,7 @@ let
   (name:
     ''
       # shellcheck disable=SC1090
-      "source \${./scripts/${name}.sh}"
+      source "${./scripts/${name}.sh}"
     ''
   )
   [
