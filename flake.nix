@@ -17,7 +17,10 @@
     {
       nixosConfigurations.x86_64 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
-        specialArgs = { inherit self name version configuration; };
+        specialArgs = {
+          inherit self name version configuration;
+          hardware = flag: builtins.match ".*${flag}.*" (builtins.getEnv "HARDWARE") != null;
+        };
         modules = [
           { nixpkgs.config.allowUnfree = true; }
           nix-flatpak.nixosModules.nix-flatpak

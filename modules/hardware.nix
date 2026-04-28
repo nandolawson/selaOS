@@ -2,18 +2,13 @@
   config,
   configuration,
   lib,
+  hardware,
   name,
   pkgs,
   self,
   version,
   ...
 }:
-let
-  hardware = flag: builtins.match ".*${flag}.*" (builtins.getEnv "HARDWARE") != null;
-in
-assert builtins.getEnv "EFI_UUID" != "" || throw "EFI_UUID fehlt!";
-assert (hardware "cpuIntel" || hardware "cpuAmd") || throw "CPU-Erkennung fehlgeschlagen!";
-assert (hardware "gpuAmd" || hardware "gpuIntel" || hardware "gpuNvidia") || throw "GPU-Erkennung fehlgeschlagen!";
 {
   hardware = {
     bluetooth = {
