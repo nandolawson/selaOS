@@ -1,4 +1,4 @@
-{ ... }:
+{ config, ... }:
 {
     boot.initrd.network = {
       imports = [
