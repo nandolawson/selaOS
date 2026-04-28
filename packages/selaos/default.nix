@@ -9,41 +9,39 @@ let
     "show_notification"
     "update_system"
   ];
-in
-{
-  environment.systemPackages = [
-    pkgs.writeShellApplication {
-      name = "selaos";
-      runtimeInputs = with pkgs; [
-        coreutils
-        pciutils
-        gnugrep
-        gawk
-        findutils
-        libnotify
-        git
-        nixos-rebuild
-      ];
-      text =
-      ''
-        ${functions}
-        case "''${1:-help}" in
-            hardware)
-                shift
-                detect_hardware "$@"
-                ;;
-            update)
+  selaos = pkgs.writeShellApplication {
+    name = "selaos";
+    runtimeInputs = with pkgs; [
+      coreutils
+      pciutils
+      gnugrep
+      gawk
+      findutils
+      libnotify
+      git
+      nixos-rebuild
+    ];
+    text = ''
+      ${functions}
+      case "''${1:-help}" in
+          hardware)
+              shift
+              detect_hardware "$@"
+              ;;
+          update)
               update_system
               ;;
-            help)
+          help)
               show_help
               ;;
-            *)
+          *)
               show_help
               exit 1
               ;;
-        esac
-      '';
-    }
-  ];
+      esac
+    '';
+  };
+in
+{
+  environment.systemPackages = [selaos ];
 }
