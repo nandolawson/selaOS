@@ -8,5 +8,6 @@
         ignoreUserConfig = false;
         quickPhrase = { };
         quickPhraseFiles = { };
+        waylandFrontend = false;
     };
 }

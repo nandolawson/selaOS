@@ -13,6 +13,5 @@
             locales = config.i18n.supportedLocales;
         };
         localeCharsets = { };
-        waylandFrontend = false;
     };
 }
