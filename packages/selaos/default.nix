@@ -4,7 +4,7 @@ let
 functions = lib.concatMapStringsSep "\n" 
   (name: ''
     # shellcheck disable=SC1090,SC1091
-    source "${./scripts/${name}.sh}"
+    source "${./functions/${name}.sh}"
   '')
   [
     "detect_hardware"
