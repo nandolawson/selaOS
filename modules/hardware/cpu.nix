@@ -1,4 +1,4 @@
-{ lib, hardware, ... }:
+{ config, lib, hardware, ... }:
 
 {
     hardware.cpu = {
