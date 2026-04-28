@@ -66,4 +66,4 @@
         release = 0;
       }.${configuration.General.channel} or 0;
     };
-};
+}
