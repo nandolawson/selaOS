@@ -8,4 +8,4 @@
         }.${configuration.General.channel} or false;
         efiSysMountPoint = "/boot";
     };
-};
+}
