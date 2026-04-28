@@ -1,22 +1,21 @@
-completions() {
-local cur prev
-    COMPREPLY=()
-    cur="${COMP_WORDS[COMP_CWORD]}"
-    prev="${COMP_WORDS[COMP_CWORD-1]}"
+_completions_selaos() {
+    local cur prev words cword
+    _init_completion || return
 
-    case "$prev" in
-        selaos)
-            COMPREPLY=( $(compgen -W "hardware update help" -- "$cur") )
-            return 0
-            ;;
+    case "${words[1]}" in
         hardware)
             COMPREPLY=( $(compgen -W "--show --save --notification" -- "$cur") )
-            return 0
+            ;;
+        update)
+            COMPREPLY=()
+            ;;
+        help)
+            COMPREPLY=()
             ;;
         *)
-            return 0
+            COMPREPLY=( $(compgen -W "hardware update help" -- "$cur") )
             ;;
     esac
 }
 
-complete -F completions selaos
+complete -F _completions_selaos selaos

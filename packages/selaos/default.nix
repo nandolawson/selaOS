@@ -28,8 +28,16 @@ functions = lib.concatMapStringsSep "\n"
       ${functions}
       case "''${1:-help}" in
           hardware)
-              shift
-              detect_hardware "$@"
+            ARGS=""
+              for arg in "$@"; do
+                case "$arg" in
+                  --show) ARGS+=" -s" ;;
+                  --save) ARGS+=" -v" ;;
+                  --notification) ARGS+=" -n" ;;
+                  *) ARGS+=" $arg" ;;
+                esac
+              done
+              detect_hardware $ARGS
               ;;
           update)
               update_system
@@ -46,9 +54,8 @@ functions = lib.concatMapStringsSep "\n"
   };
 in
 {
-  environment.systemPackages = [ selaos ];
-  environment.etc."bash_completion.d/selaos" = {
-    source = ./scripts/completion.sh;
-    mode = "0644";
-  };
+  environment = {
+    #environment.etc."bash_completion.d/selaos".source = ./scripts/completion.sh;
+    systemPackages = [ selaos ];
+  }
 }
