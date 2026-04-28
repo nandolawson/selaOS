@@ -1,7 +1,7 @@
 { lib, name, version, ... }:
 {
     system.nixos = {
-      codeName = "Xantusia";
+      #codeName = "Xantusia";
       distroName = name;
       distroId = lib.toLower name;
       label = "${name}-${version}";
