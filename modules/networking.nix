@@ -3,6 +3,6 @@
   networking = {
     hostName = "nixos";
     networkmanager.enable = true;
-    useDHCP = true;
+    #useDHCP = true;
   };
 }
