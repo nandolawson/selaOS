@@ -1,6 +1,6 @@
 { ... }:
 {
-    boot.loader.grub.external = {
+    boot.loader.external = {
         enable = false;
         installHook = "";
     };

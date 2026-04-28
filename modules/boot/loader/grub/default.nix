@@ -2,7 +2,6 @@
 {
     imports =
         [
-            ./external.nix
             ./memtest86.nix
         ];
     boot.loader.grub = {

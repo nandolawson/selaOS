@@ -5,6 +5,7 @@
         ./efi.nix
         ./external.nix
         ./generationsDir.nix
+        ./generic-extlinux-compatible.nix
         ./grub
         ./systemd-boot
         ./refind.nix
