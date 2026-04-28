@@ -18,7 +18,7 @@ assert (hardware "gpuAmd" || hardware "gpuIntel" || hardware "gpuNvidia") || thr
       ./hardware
       ./filesystems.nix
       ./networking.nix
-      ./services.nix
+      ./services
       ./system.nix
     ];
   console.keyMap = "de";

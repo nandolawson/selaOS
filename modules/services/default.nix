@@ -5,6 +5,7 @@
       ./ananicy.nix
       ./flatpak.nix
       ./pipewire.nix
+      ./xserver.nix
     ];
   services = {
     desktopManager.plasma6 = {
