@@ -21,7 +21,7 @@
         modules = [
           { nixpkgs.config.allowUnfree = true; }
           nix-flatpak.nixosModules.nix-flatpak
-          ./configuration.nix
+          ./modules
           ./temp.nix
           (
             { lib, ... }:
