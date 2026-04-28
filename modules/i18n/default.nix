@@ -12,5 +12,6 @@
             allLocales = lib.elem "all" config.i18n.supportedLocales;
             locales = config.i18n.supportedLocales;
         };
+        waylandFrontend = false;
     };
 }

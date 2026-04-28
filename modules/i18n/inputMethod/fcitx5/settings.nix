@@ -4,6 +4,5 @@
         addons = { };
         globalOptions = { };
         inputMethod = { };
-        waylandFrontend = false;
     };
 }
