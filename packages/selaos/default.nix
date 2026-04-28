@@ -2,7 +2,7 @@
 
 let
   functions = lib.concatMapStringsSep "\n" 
-  (name: "source \${./scripts/selaos/${name}.sh}")
+  (name: "source \${./scripts/${name}.sh}")
   [
     "detect_hardware"
     "show_help"
