@@ -1,6 +1,6 @@
 { config, configuration, pkgs, self, ... }:
 {
-    plymouth = {
+    boot.plymouth = {
       enable = {
         developer = false;
         insider = true;
