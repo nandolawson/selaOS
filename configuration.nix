@@ -649,10 +649,10 @@ assert (hardware "gpuAmd" || hardware "gpuIntel" || hardware "gpuNvidia") || thr
   ];
   system = {
     nixos = {
-      distroName = "${name}";
+      distroName = name;
       distroId = lib.toLower name;
       label = "${name}-${version}";
-      release = version;
+      release = lib.mkForce version;
     };
   };
   systemd.tmpfiles.rules = [
