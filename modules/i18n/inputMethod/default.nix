@@ -11,6 +11,5 @@
         enableGtk3 = true;
         type = "fcitx5";
         uim.toolbar = "gtk";
-        localCharsets = { };
     };
 }
