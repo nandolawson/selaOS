@@ -1,4 +1,4 @@
-{ pkgs, --- }:
+{ pkgs, ... }:
 {
     boot.zfs = {
       allowHibernation = false;
