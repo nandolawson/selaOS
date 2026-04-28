@@ -2,7 +2,12 @@
 
 let
   functions = lib.concatMapStringsSep "\n" 
-  (name: "source \${./scripts/${name}.sh}")
+  (name:
+    ''
+      # shellcheck disable=SC1090
+      "source \${./scripts/${name}.sh}"
+    ''
+  )
   [
     "detect_hardware"
     "show_help"
@@ -43,5 +48,5 @@ let
   };
 in
 {
-  environment.systemPackages = [selaos ];
+  environment.systemPackages = [ selaos ];
 }
