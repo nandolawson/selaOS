@@ -22,7 +22,6 @@ assert (hardware "gpuAmd" || hardware "gpuIntel" || hardware "gpuNvidia") || thr
       ./services
       ./system
       ./time.nix
-      ./tmp
       ./zramSwap.nix
     ];
   console.keyMap = "de";
