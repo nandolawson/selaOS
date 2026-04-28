@@ -53,4 +53,5 @@ assert (hardware "gpuAmd" || hardware "gpuIntel" || hardware "gpuNvidia") || thr
   users.mutableUsers = true;
   xdg.portal.enable = true;
   i18n.defaultLocale = "de_DE.UTF-8";
+  programs.bash.completion.enable = true;
 }
