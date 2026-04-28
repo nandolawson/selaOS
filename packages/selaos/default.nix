@@ -1,6 +1,17 @@
 { lib, pkgs, ... }:
 
 let
+functions = lib.concatMapStringsSep "\n" 
+  (name: ''
+    # shellcheck disable=SC1090,SC1091
+    source "${./scripts/${name}.sh}"
+  '')
+  [
+    "detect_hardware"
+    "show_help"
+    "show_notification"
+    "update_system"
+  ];
   selaos = pkgs.writeShellApplication {
     name = "selaos";
     runtimeInputs = with pkgs; [
@@ -14,14 +25,7 @@ let
       nixos-rebuild
     ];
     text = ''
-# shellcheck disable=SC1091
-      source "${./scripts/detect_hardware.sh}"
-      # shellcheck disable=SC1091
-      source "${./scripts/show_help.sh}"
-      # shellcheck disable=SC1091
-      source "${./scripts/show_notification.sh}"
-      # shellcheck disable=SC1091
-      source "${./scripts/update_system.sh}"
+      ${functions}
       case "''${1:-help}" in
           hardware)
               shift
