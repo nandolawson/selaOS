@@ -2,7 +2,7 @@
 {
     imports = [
         ./zramSettings.nix
-    ]
+    ];
     boot.tmp = {
         cleanOnBoot = false;
         tmpfsHugeMemoryPages = "never";
