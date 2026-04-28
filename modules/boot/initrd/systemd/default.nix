@@ -1,6 +1,6 @@
 { config, ... }:
 {
-      systemd = {
+      boot.initrd.systemd = {
         additionalUpstreamUnits = [ ];
         automounts = [ ];
         contents = { };
