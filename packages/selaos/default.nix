@@ -37,6 +37,7 @@ functions = lib.concatMapStringsSep "\n"
                   *) ARGS+=" $arg" ;;
                 esac
               done
+              # shellcheck disable=SC2086
               detect_hardware $ARGS
               ;;
           update)
