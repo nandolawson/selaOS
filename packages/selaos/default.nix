@@ -14,9 +14,13 @@ let
       nixos-rebuild
     ];
     text = ''
+# shellcheck disable=SC1091
       source "${./scripts/detect_hardware.sh}"
+      # shellcheck disable=SC1091
       source "${./scripts/show_help.sh}"
+      # shellcheck disable=SC1091
       source "${./scripts/show_notification.sh}"
+      # shellcheck disable=SC1091
       source "${./scripts/update_system.sh}"
       case "''${1:-help}" in
           hardware)
