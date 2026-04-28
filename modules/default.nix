@@ -1,6 +1,5 @@
 {
   config,
-  configuration,
   lib,
   hardware,
   name,
@@ -10,16 +9,17 @@
   ...
 }:
 
-assert builtins.getEnv "EFI_UUID" != "" || throw "EFI_UUID fehlt!";
 assert (hardware "cpuIntel" || hardware "cpuAmd") || throw "CPU-Erkennung fehlgeschlagen!";
 assert (hardware "gpuAmd" || hardware "gpuIntel" || hardware "gpuNvidia") || throw "GPU-Erkennung fehlgeschlagen!";
 {
   imports =
     [
       ./boot
-      ./hardware.nix
+      ./hardware
       ./filesystems.nix
+      ./networking.nix
       ./services.nix
+      ./system.nix
     ];
   console.keyMap = "de";
   documentation.nixos = {
@@ -33,13 +33,7 @@ assert (hardware "gpuAmd" || hardware "gpuIntel" || hardware "gpuNvidia") || thr
           warningsAreErrors = true;
       };
   };
-  networking = {
-    hostName = "nixos";
-    networkmanager.enable = true;
-  };
-  nix.settings = {
-    experimental-features = [ "nix-command" "flakes" ];
-  };
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
   security.rtkit.enable = true;
   swapDevices = [
     {
@@ -47,15 +41,6 @@ assert (hardware "gpuAmd" || hardware "gpuIntel" || hardware "gpuNvidia") || thr
       size = 8192;
     }
   ];
-  system = {
-    nixos = {
-      distroName = name;
-      distroId = lib.toLower name;
-      label = "${name}-${version}";
-      versionSuffix = " Test";
-      version = version;
-    };
-  };
   systemd.tmpfiles.rules = [
     "d /var/lib/flatpak/user-data 0775 root users -"
     "L+ %h/.var - - - - /var/lib/flatpak/user-data/%u"
@@ -66,9 +51,7 @@ assert (hardware "gpuAmd" || hardware "gpuIntel" || hardware "gpuNvidia") || thr
     timeZone = "Europe/Berlin";
   };
   users.mutableUsers = true;
-  xdg.portal = {
-    enable = true;
-  };
+  xdg.portal.enable = true;
   zramSwap = {
     algorithm = "zstd";
     enable = true;

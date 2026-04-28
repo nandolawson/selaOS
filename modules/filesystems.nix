@@ -1,4 +1,6 @@
 { name, ... }:
+
+assert builtins.getEnv "EFI_UUID" != "" || throw "EFI_UUID fehlt!";
 {
   fileSystems = {
     "/" = {
