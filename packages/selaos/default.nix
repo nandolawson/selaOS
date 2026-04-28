@@ -4,7 +4,7 @@ let
 functions = lib.concatMapStringsSep "\n" 
   (name: ''
     # shellcheck disable=SC1090,SC1091
-    source "${./scripts/${name}.sh}"
+    source "${./functions/${name}.sh}"
   '')
   [
     "detect_hardware"
@@ -47,4 +47,5 @@ functions = lib.concatMapStringsSep "\n"
 in
 {
   environment.systemPackages = [ selaos ];
+  environment.etc."bash_completion.d/selaos".source = ./scripts/completion.sh;
 }
