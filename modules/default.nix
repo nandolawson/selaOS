@@ -15,10 +15,11 @@ assert (hardware "gpuAmd" || hardware "gpuIntel" || hardware "gpuNvidia") || thr
     [
       ./boot
       ./hardware
-      ./filesystems.nix
+      ./fileSystems.nix
       ./networking.nix
       ./services
       ./system.nix
+      ./zramSwap.nix
     ];
   console.keyMap = "de";
   documentation.nixos = {
@@ -51,11 +52,5 @@ assert (hardware "gpuAmd" || hardware "gpuIntel" || hardware "gpuNvidia") || thr
   };
   users.mutableUsers = true;
   xdg.portal.enable = true;
-  zramSwap = {
-    algorithm = "zstd";
-    enable = true;
-    memoryPercent = 50;
-    priority = 100;
-  };
   i18n.defaultLocale = "de_DE.UTF-8";
 }

@@ -2,6 +2,6 @@
 { 
     imports =
     [
-        ./selaos.nix
+        ./selaos
     ];
 }
