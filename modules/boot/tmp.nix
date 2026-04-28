@@ -1,6 +1,6 @@
 { ... }:
 {
-    tmp = {
+    boot.tmp = {
         cleanOnBoot = false;
         tmpfsHugeMemoryPages = "never";
         tmpfsSize = "50%";
