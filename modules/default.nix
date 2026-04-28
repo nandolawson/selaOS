@@ -14,25 +14,18 @@ assert (hardware "gpuAmd" || hardware "gpuIntel" || hardware "gpuNvidia") || thr
   imports =
     [
       ./boot
+      ./documemtation
       ./hardware
       ./fileSystems.nix
+      ./i18n
       ./networking.nix
       ./services
-      ./system.nix
+      ./system
+      ./time.nix
+      ./tmp
       ./zramSwap.nix
     ];
   console.keyMap = "de";
-  documentation.nixos = {
-      checkRedirects = true;
-      enable = false;
-      extraModules = [ ];
-      extraModuleSources = [ ];
-      includeAllModules = false;
-      options = {
-          splitBuild = true;
-          warningsAreErrors = true;
-      };
-  };
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   security.rtkit.enable = true;
   swapDevices = [
@@ -46,12 +39,7 @@ assert (hardware "gpuAmd" || hardware "gpuIntel" || hardware "gpuNvidia") || thr
     "L+ %h/.var - - - - /var/lib/flatpak/user-data/%u"
     "L+ /var/lib/flatpak/overrides/global - - - - socket=wayland,fallback-x11;device=dri;filesystems=home;"
   ];
-  time = {
-    hardwareClockInLocalTime = false;
-    timeZone = "Europe/Berlin";
-  };
   users.mutableUsers = true;
   xdg.portal.enable = true;
-  i18n.defaultLocale = "de_DE.UTF-8";
   programs.bash.completion.enable = true;
 }

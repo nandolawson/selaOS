@@ -1,12 +1,7 @@
 {
-  config,
-  configuration,
   lib,
   hardware,
-  name,
   pkgs,
-  self,
-  version,
   ...
 }:
 {
@@ -15,12 +10,15 @@
       ./binfmt.nix
       ./bootspec.nix
       ./crashDump.nix
-      ./initrd.nix
+      ./initrd
       ./iscsi-initiator.nix
       ./kernel.nix
       ./loader
+      ./modprobeConfig.nix
       ./plymouth.nix
-      ./tmp.nix
+      ./swraid.nix
+      ./tmp
+      ./uki.nix
       ./zfs.nix
     ];
   boot = {
@@ -55,10 +53,6 @@
     ]
     ++ lib.optionals (hardware "gpuAmd") [ "amdgpu.ppfeaturemask=0xffffffff" ]
     ++ lib.optionals (hardware "gpuNvidia") [ "nvidia_drm.modeset=1" ];
-    modprobeConfig = {
-      enable = true;
-      useUbuntuModuleBlacklist = true;
-    };
     nixStoreMountOpts = [
       "ro"
       "nodev"
@@ -68,25 +62,6 @@
     resumeDevice = "";
     runSize = "25%";
     supportedFilesystems = [ "btrfs" "exfat" "ext4" "ntfs" "vfat" ];
-    swraid = {
-      enable = false;
-      mdadmConf = "";
-    };
     systemdExecutable = "/run/current-system/systemd/lib/systemd/systemd";
-    uki = {
-      #configFile
-      #name
-      #settings
-      tries = null;
-      version = config.system.image.version;
-    };
-    uvesafb = {
-      enable = false;
-      gfx-mode = "1024x768-32";
-      v86d.package = ''
-        config.boot.kernelPackages.v86d.overrideAttrs (old: {
-            hardeningDisable = [ "all" ];
-        })'';
-    };
   };
 }
