@@ -1,11 +1,6 @@
 { config, configuration, pkgs, self, ... }:
 {
-    boot.plymouth = {
-      enable = {
-        developer = false;
-        insider = true;
-        release = true;
-      }.${configuration.General.channel} or true;
+    boot.plymouth = true;
       extraConfig = "";
       font = "${pkgs.dejavu_fonts.minimal}/share/fonts/truetype/DejaVuSans.ttf";
       logo = "${self}/assets/logo.svg";
