@@ -1,6 +1,8 @@
 { ... }:
 {
-    imports = [ options.nix ];
+    imports = [
+      options.nix
+    ];
     documentation.nixos = {
       checkRedirects = true;
       enable = false;
