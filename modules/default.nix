@@ -14,7 +14,7 @@ assert (hardware "gpuAmd" || hardware "gpuIntel" || hardware "gpuNvidia") || thr
   imports =
     [
       ./boot
-      ./documemtation
+      ./documentation
       ./hardware
       ./fileSystems.nix
       ./i18n
