@@ -47,5 +47,8 @@ functions = lib.concatMapStringsSep "\n"
 in
 {
   environment.systemPackages = [ selaos ];
-  environment.etc."bash_completion.d/selaos".source = ./scripts/completion.sh;
+  environment.etc."bash_completion.d/selaos" = {
+    source = ./scripts/completion.sh;
+    mode = "0644";
+  };
 }
