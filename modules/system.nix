@@ -1,4 +1,4 @@
-{ name, version, ... }:
+{ lib, name, version, ... }:
 {
   system = {
     nixos = {
