@@ -1,6 +1,6 @@
 { ... }:
 {
-    uki = {
+    boot.uki = {
       #configFile
       #name
       #settings
