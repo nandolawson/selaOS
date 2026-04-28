@@ -1,4 +1,3 @@
-Hab es selber hinbekommen mit folgendem Script:
 { lib, pkgs, ... }:
 
 let
