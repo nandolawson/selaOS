@@ -1,4 +1,4 @@
-{ config, configuration, pkgs, ... }:
+{ config, configuration, pkgs, self, ... }:
 {
     plymouth = {
       enable = {
