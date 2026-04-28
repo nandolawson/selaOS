@@ -1,4 +1,4 @@
-{ ... }:
+{ config, ... }:
 {
     boot.uki = {
       #configFile
