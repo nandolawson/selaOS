@@ -1,6 +1,6 @@
 { ... }:
 {
-    kernel = {
+    boot.kernel = {
       enable = true;
       randstructSeed = "";
       sysctl = {
