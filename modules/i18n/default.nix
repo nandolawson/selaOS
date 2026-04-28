@@ -6,7 +6,7 @@
     i18n = {
         defaultCharset = "UTF-8";
         defaultLocale = "de_DE.UTF-8";
-        extraLocalSettings = { };
+        extraLocaleSettings = { };
         extraLocales = [ ];
         glibcLocales =  pkgs.glibcLocales.override {
             allLocales = lib.elem "all" config.i18n.supportedLocales;
