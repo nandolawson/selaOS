@@ -652,7 +652,7 @@ assert (hardware "gpuAmd" || hardware "gpuIntel" || hardware "gpuNvidia") || thr
       distroName = name;
       distroId = lib.toLower name;
       label = "${name}-${version}";
-      version = version;
+      version = lib.mkForce version;
     };
   };
   systemd.tmpfiles.rules = [
