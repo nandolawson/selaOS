@@ -19,6 +19,7 @@ assert (hardware "gpuAmd" || hardware "gpuIntel" || hardware "gpuNvidia") || thr
     [
       ./boot
       ./hardware.nix
+      ./filesystems.nix
     ];
   console.keyMap = "de";
   documentation.nixos = {
