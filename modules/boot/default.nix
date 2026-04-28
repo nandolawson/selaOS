@@ -10,15 +10,17 @@
   ...
 }:
 {
+  imports =
+    [
+      ./binfmt.nix
+      ./initrd.nix
+      ./iscsi-initiator.nix
+      ./kernel.nix
+      ./plymouth.nix
+    ]
   boot = {
     bcache.enable = true;
     bcachefs.package = pkgs.bcachefs-tools;
-    binfmt = {
-      addEmulatedSystemsToNixSandbox = false;
-      emulatedSystems = [ ];
-      preferStaticEmulators = false;
-      registrations = { };
-    };
     blacklistedKernelModules = { };
     bootspec = {
       enableValidation = false;
@@ -42,163 +44,6 @@
     extraSystemdUnitPaths = [ ];
     growPartition = false;
     hardwareScan = true;
-    initrd = {
-      allowMissingModules = false;
-      availableKernelModules = [ "xhci_pci" "usbhid" ]
-      ++ (if hardware "storageNvme" then [ "nvme" ] else [])
-      ++ (if hardware "storageSata" then [ "ahci" "sd_mod" ] else []);
-      checkJournalingFS = true;
-      clevis = {
-        devices = { };
-        enable = false;
-        package = pkgs.clevis;
-        useTang = false;
-      };
-      compressor = "zstd";
-      compressorArgs = null;
-      enable = !config.boot.isContainer;
-      extraFiles = { };
-      extraFirmwarePaths = [ ];
-      includeDefaultModules = true;
-      kernelModules = [  ];
-      luks = {
-        cryptoModules = [ ];
-        devices = { };
-        fido2Support = false;
-        gpgSupport = false;
-        mitigateDMAAttacks = true;
-        reusePassphrases = true;
-        yubikeySupport = false;
-      };
-      network = {
-        enable = false;
-        flushBeforeStage2 = !config.boot.initrd.systemd.enable;
-        ifstate = {
-          allowIfstateToDrasticlyIncreaseInitrdSize = false;
-          cleanupSettings = { interfaces = { }; };
-          enable = false;
-          package = pkgs.ifstate.override { withConfigValidation = false; };
-          settings = { };
-        };
-        openvpn = {
-          configuration = "";
-          enable = false;
-        };
-        postCommands = "";
-        ssh = {
-          authorizedKeyFiles = [ ];
-          enable = false;
-          extraConfig = "";
-          hostKeys = [ ];
-          ignoreEmptyHostKeys = false;
-          port = 22;
-          shell = "\"/bin/ash\"";
-        };
-        udhcpc = {
-          enable = config.networking.useDHCP;
-          extraArgs = [ ];
-        };
-      };
-      nix-store-veritysetup.enable = false;
-      postMountCommands = "";
-      postResumeCommands = "";
-      preDeviceCommands = "";
-      preFailCommands = "";
-      preLVMCommands = "";
-      prepend = [ ];
-      secrets = { };
-      services = {
-        bcache.enable = config.boot.initrd.systemd.enable && config.boot.bcache.enable;
-        lvm.enable = config.boot.initrd.systemd.enable && config.services.lvm.enable;
-        resolved.enable = config.boot.initrd.systemd.network.enable;
-        udev = {
-          binPackages = [ ];
-          packages = [ ];
-          rules = "";
-        };
-      };
-      supportedFilesystems = [ "btrfs" "vfat" ];
-      systemd = {
-        additionalUpstreamUnits = [ ];
-        automounts = [ ];
-        contents = { };
-        dbus.enable = false;
-        dmVerity.enable = false;
-        emergencyAccess = false;
-        enable = true;
-        extraBin = { };
-        fido2.enable = false;
-        groups = { };
-        initrdBin = [ ];
-        managerEnvironment = { PATH = "/bin:/sbin"; };
-        mounts = [ ];
-        network = {
-          config = { };
-          enable = false;
-          links = { };
-          netdevs = { };
-          networks = { };
-          wait-online = {
-            anyInterface = config.networking.useDHCP;
-            enable = false;
-            extraArgs = [ ];
-            ignoredInterfaces = [ ];
-            timeout = 120;
-          };
-        };
-        package = config.systemd.package;
-        packages = [ ];
-        paths = { };
-        repart = {
-          device = null;
-          discard = true;
-          empty = "refuse";
-          enable = false;
-          extraArgs = [ ];
-        };
-        root = "fstab";
-        services = { };
-        slices = { };
-        sockets = { };
-        storePaths = [ ];
-        suppressedStorePaths = [ ];
-        suppressedUnits = [ ];
-        targets = { };
-        timers = { };
-        tmpfiles = { };
-        tpm2.enable = config.boot.initrd.systemd.package.withTpm2Units;
-        units = { };
-        users = { };
-      };
-      verbose = false;
-    };
-    iscsi-initiator = {
-      discoverPortal = null;
-      extraConfig = null;
-      extraConfigFile = null;
-      extraIscsiCommands = "";
-      logLevel = 1;
-      loginAll = false;
-      name = null;
-      target = null;
-    };
-    kernel = {
-      enable = true;
-      randstructSeed = "";
-      sysctl = {
-        "kernel.sched_autogroup_enabled" = 0;
-        "kernel.sched_cfs_bandwidth_slice_us" = 3000;
-        "net.ipv4.tcp_congestion_control" = "bbr";
-        "net.core.default_qdisc" = "fq";
-        "net.core.mem_max" = null;
-        "net.core.wmem_max" = null;
-        "vm.dirty_background_ratio" = 5;
-        "vm.dirty_ratio" = 10;
-        "vm.swappiness" = 180;
-        "vm.vfs_cache_pressure" = 50;
-      };
-      sysfs = { };
-    };
     kernelModules = [ "tcp_bbr" ]
     ++ lib.optionals (hardware "cpuAmd") [ "kvm_amd" ]
     ++ lib.optionals (hardware "cpuIntel") [ "kvm_intel" ];
@@ -404,23 +249,6 @@
       "nodev"
       "nouuid"
     ];
-    plymouth = {
-      enable = {
-        developer = false;
-        insider = true;
-        release = true;
-      }.${configuration.General.channel} or true;
-      extraConfig = "";
-      font = "${pkgs.dejavu_fonts.minimal}/share/fonts/truetype/DejaVuSans.ttf";
-      logo = "${self}/assets/logo.svg";
-      package = pkgs.plymouth.override { systemd = config.boot.initrd.systemd.package; };
-      #themePackages =
-      theme = "bgrt";
-      tpm2-totp = {
-        enable = false;
-        package = pkgs.tpm2-totp-with-plymouth;
-      };
-    };
     postBootCommands = "";
     resumeDevice = "";
     runSize = "25%";
