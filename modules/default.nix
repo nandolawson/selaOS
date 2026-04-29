@@ -49,13 +49,14 @@ assert (configuration.hardware "gpuAmd" || configuration.hardware "gpuIntel" || 
       pkgs.kdePackages.xdg-desktop-portal-kde
       pkgs.xdg-desktop-portal-gtk
     ];
-    config.common.default = "kde";
-    config.groups.base = {
-      default = [ "kde" ];
-      "org.freedesktop.impl.portal.Settings" = [
-        "gtk"
-        "kde"
-      ];
+    config = {
+      common = {
+        default = [ "kde" ];
+        "org.freedesktop.impl.portal.Settings" = [
+          "gtk"
+          "kde"
+        ];
+      };
     };
   };
   programs.bash.completion.enable = true;
