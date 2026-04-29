@@ -47,13 +47,10 @@ assert (configuration.hardware "gpuAmd" || configuration.hardware "gpuIntel" || 
       };
     };
   };
-  environment.etc."xdg/autostart/kcm_gamecontroller.desktop".text = ''
+  environment.etc."xdg/applications/kcm_gamecontroller.desktop".text = ''
     [Desktop Entry]
-    Name=Game Controller
-    NoDisplay=true
-    Type=Service
-    X-KDE-ServiceTypes=KCModule
-'';
+    Hidden=true
+  '';
   environment.etc = {
     "flatpak/overrides/com.google.Chrome".text = ''
       [Context]
