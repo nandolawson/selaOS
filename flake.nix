@@ -9,16 +9,18 @@
     let
       name = "selaOS";
       version = "1.0";
-      configPath = /etc/selaos/configuration.toml;
-      configuration = if builtins.pathExists configPath
-      then builtins.fromTOML (builtins.readFile configPath)
-      else builtins.throw "FEHLER: Die Datei ${toString configPath} wurde nicht gefunden. Das System kann ohne diese Konfiguration nicht gebaut werden.";
     in
     {
       nixosConfigurations.x86_64 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {
-          inherit self name version configuration;
+          inherit self name version;
+          branch = let
+            envBranch = builtins.getEnv "BRANCH";
+          in
+            if envBranch == "release" || envBranch == "insider" || envBranch == "developer"
+            then envBranch
+            else "release";
           hardware = flag: builtins.match ".*${flag}.*" (builtins.getEnv "HARDWARE") != null;
         };
         modules = [

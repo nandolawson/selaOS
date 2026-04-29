@@ -1,4 +1,4 @@
-{ configuration, pkgs, ... }:
+{ branch, pkgs, ... }:
 {
     imports =
       [
@@ -17,11 +17,7 @@
         efiInstallAsRemovable = false;
         efiSupport = true;
         enable = false;
-        enableEditor = {
-          developer = true;
-          insider = false;
-          release = false;
-        }.${configuration.General.channel} or false;
+        enableEditor = (branch == "developer");
         enrollConfig = true;
         extraConfig = "";
         extraEntries = "";
@@ -61,10 +57,6 @@
         };
         validateChecksums = true;
       };
-      timeout = {
-        developer = null;
-        insider = 0;
-        release = 0;
-      }.${configuration.General.channel} or 0;
+      timeout = if branch == "developer" then 5 else 0;
     };
 }

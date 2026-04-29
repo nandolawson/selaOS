@@ -1,4 +1,4 @@
-{ configuration, name, ... }:
+{ branch, name, ... }:
 {
     imports =
         [
@@ -9,11 +9,7 @@
     boot.loader.systemd-boot = {
         configurationLimit = 2;
         consoleMode = "max";
-        editor = {
-            developer = true;
-            insider = false;
-            release = false;
-        }.${configuration.General.channel} or false;
+        editor = (branch == "developer");
         enable = true;
         extraEntries = { };
         extraFiles = { };
