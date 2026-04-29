@@ -1,10 +1,5 @@
 {
-  lib,
   hardware,
-  name,
-  pkgs,
-  self,
-  version,
   ...
 }:
 
@@ -21,7 +16,9 @@ assert (hardware "gpuAmd" || hardware "gpuIntel" || hardware "gpuNvidia") || thr
       ./networking.nix
       ./services
       ./system
+      ./systemd.nix
       ./time.nix
+      ./users.nix
       ./zramSwap.nix
     ];
   console.keyMap = "de";
@@ -33,12 +30,6 @@ assert (hardware "gpuAmd" || hardware "gpuIntel" || hardware "gpuNvidia") || thr
       size = 8192;
     }
   ];
-  systemd.tmpfiles.rules = [
-    "d /var/lib/flatpak/user-data 0775 root users -"
-    "L+ %h/.var - - - - /var/lib/flatpak/user-data/%u"
-    "L+ /var/lib/flatpak/overrides/global - - - - socket=wayland,fallback-x11;device=dri;filesystems=home;"
-  ];
-  users.mutableUsers = true;
   xdg.portal.enable = true;
   programs.bash.completion.enable = true;
 }

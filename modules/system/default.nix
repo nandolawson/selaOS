@@ -1,4 +1,4 @@
-{ lib, name, version, ... }:
+{ ... }:
 {
   imports = [
     ./nixos.nix
