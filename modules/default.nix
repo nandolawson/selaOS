@@ -51,5 +51,9 @@ assert (configuration.hardware "gpuAmd" || configuration.hardware "gpuIntel" || 
     [Context]
     filesystems=home;
   '';
+  system.activationScripts.flatpak-overrides.text = ''
+    mkdir -p /var/lib/flatpak/overrides
+    ln -sf /etc/flatpak/overrides/global /var/lib/flatpak/overrides/global
+  '';
   programs.bash.completion.enable = true;
 }
