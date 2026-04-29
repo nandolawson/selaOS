@@ -8,6 +8,6 @@
         ignoreUserConfig = false;
         quickPhrase = { };
         quickPhraseFiles = { };
-        waylandFrontend = true #config.services.plasma6.enable;
+        waylandFrontend = true; #config.services.plasma6.enable;
     };
 }
