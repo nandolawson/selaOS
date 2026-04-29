@@ -51,6 +51,7 @@ assert (configuration.hardware "gpuAmd" || configuration.hardware "gpuIntel" || 
     [Context]
     filesystems=home;
     [Session Bus Policy]
+    org.freedesktop.portal.Desktop=talk
     org.freedownloadmanager.Manager=talk
   '';
   environment.etc."flatpak/overrides/org.freedownloadmanager.Manager".text = ''
