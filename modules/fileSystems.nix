@@ -23,10 +23,10 @@ assert builtins.getEnv "EFI_UUID" != "" || throw "EFI_UUID fehlt!";
       fsType = "btrfs";
       options = [ "subvol=@nix" "compress=zstd" "noatime" ];
     };
-    "/var/lib/flatpak" = {
+    "/var" = {
       device = "/dev/disk/by-label/${name}";
       fsType = "btrfs";
-      options = [ "subvol=@flatpak" "compress=zstd" "noatime" ];
+      options = [ "subvol=@var" "compress=zstd" "noatime" ];
     };
     "/var/log" = {
       device = "/dev/disk/by-label/${name}";
