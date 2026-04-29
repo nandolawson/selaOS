@@ -35,6 +35,6 @@ assert (configuration.hardware "gpuAmd" || configuration.hardware "gpuIntel" || 
     enable = true;
     extraPortals = [ pkgs.kdePackages.xdg-desktop-portal-kde ];
     config.common.default = "kde";
-  }
+  };
   programs.bash.completion.enable = true;
 }
