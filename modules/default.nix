@@ -70,15 +70,7 @@ assert (configuration.hardware "gpuAmd" || configuration.hardware "gpuIntel" || 
       fi
     done
   '';
-  nixpkgs.config.packageOverrides = pkgs: {
-  nix-software-center = pkgs.callPackage (pkgs.fetchFromGitHub {
-    owner = "ljubitje";
-    repo = "nix-software-center";
-    rev = "0.1.3";
-    sha256 = "HVnDccOT6pNOXjtNMvT9T3Op4JbJm2yMBNWMUajn3vk=";
-  }) {};
   environment.systemPackages = with pkgs; [
-    nix-software-center
+    inputs.nix-software-center.packages.${system}.nix-software-center
   ];
-};
 }
