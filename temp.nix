@@ -5,7 +5,7 @@
 #    name = "xdg/autostart/kcm_${name}.desktop";
 #    value = { text = "NoDisplay=true"; };
 #  }) settings.removedPlasma6Settings);
-{
+
   environment.systemPackages = [
     (pkgs.kdePackages.systemsettings.overrideAttrs (old: {
       postInstall = (old.postInstall or "") + ''
@@ -13,5 +13,5 @@
       '';
     }))
   ];
-}
+
 }
