@@ -1,11 +1,11 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 {
     imports = [
         ./settings.nix
     ];
     i18n.inputMethod.fcitx5 = {
-        addons = [
-            fcitx5-gtk
+        addons = with pkgs; [
+            "fcitx5-gtk"
         ];
         ignoreUserConfig = false;
         quickPhrase = { };
