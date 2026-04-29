@@ -15,6 +15,7 @@ assert (configuration.hardware "gpuAmd" || configuration.hardware "gpuIntel" || 
       ./fileSystems.nix
       ./i18n
       ./networking.nix
+      ./nix
       ./services
       ./system
       ./systemd.nix
@@ -23,19 +24,6 @@ assert (configuration.hardware "gpuAmd" || configuration.hardware "gpuIntel" || 
       ./zramSwap.nix
     ];
   console.keyMap = "de";
-  nix = {
-    settings = {
-      auto-optimise-store = true;
-      keep-outputs = false;
-      keep-derivations = false;
-      experimental-features = [ "nix-command" "flakes" ];
-    };
-    gc = {
-      automatic = true;
-      dates = "weekly";
-      options = "--delete-older-than 7d";
-    };
-  };
   security.rtkit.enable = true;
   swapDevices = [
     {
@@ -46,7 +34,7 @@ assert (configuration.hardware "gpuAmd" || configuration.hardware "gpuIntel" || 
   xdg.portal = {
     enable = true;
     extraPortals = [
-      pkgs.kdePackages.xdg-desktop-portal-kde
+      pkgs.xdg-desktop-portal-kde
     ];
     config = {
       common = {
@@ -56,6 +44,6 @@ assert (configuration.hardware "gpuAmd" || configuration.hardware "gpuIntel" || 
   };
   programs.bash.completion.enable = true;
   environment.systemPackages = with pkgs; [
-    kdePackages.xdg-desktop-portal-kde
+    pkgs.xdg-desktop-portal-kde
   ];
 }
