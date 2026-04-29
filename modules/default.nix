@@ -47,8 +47,9 @@ assert (configuration.hardware "gpuAmd" || configuration.hardware "gpuIntel" || 
       };
     };
   };
-  environment.systemPackages = with pkgs; [
-    kdePackages.xdg-desktop-portal-kde
-  ];
+  environment.etc."flatpak/overrides/global".text = ''
+      [Context]
+      filesystems=home;
+    '';
   programs.bash.completion.enable = true;
 }
