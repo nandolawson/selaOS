@@ -1,7 +1,7 @@
-{ branch, ... }:
+{ configuration, ... }:
 {
     boot.loader.efi = {
-        canTouchEfiVariables = (branch == "developer");
+        canTouchEfiVariables = (configuration.branch == "developer");
         efiSysMountPoint = "/boot";
     };
 }

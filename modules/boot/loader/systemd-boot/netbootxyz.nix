@@ -1,7 +1,7 @@
-{ branch, ... }:
+{ configuration, ... }:
 {
     boot.loader.systemd-boot.netbootxyz = {
-        enable = (branch == "developer");
+        enable = (configuration.branch == "developer");
         sortKey = "o_netbootxyz";
     };
 }

@@ -1,4 +1,4 @@
-{ ... }:
+{ config, ... }:
 {
     imports = [
         ./settings.nix
@@ -8,6 +8,6 @@
         ignoreUserConfig = false;
         quickPhrase = { };
         quickPhraseFiles = { };
-        waylandFrontend = false;
+        waylandFrontend = config.services.plasma6.enable;
     };
 }

@@ -1,4 +1,4 @@
-{ config, hardware, pkgs, ... }:
+{ config, configuration, pkgs, ... }:
 {
     imports = [
       ./clevis.nix
@@ -11,12 +11,12 @@
       allowMissingModules = false;
       availableKernelModules = [ "xhci_pci" "usbhid" ]
         ++ (
-          if hardware "storageNvme"
+          if configuration.hardware "storageNvme"
           then [ "nvme" ]
           else []
         )
         ++ (
-          if hardware "storageSata"
+          if configuration.hardware "storageSata"
           then [ "ahci" "sd_mod" ]
           else []
         );

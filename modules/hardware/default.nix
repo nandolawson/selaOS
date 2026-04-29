@@ -1,7 +1,7 @@
 {
   config,
   lib,
-  hardware,
+  configuration,
   pkgs,
   ...
 }:
@@ -15,7 +15,7 @@
   hardware = {
     enableAllFirmware = true;
     enableRedistributableFirmware = config.hardware.enableAllFirmware;
-    nvidia = lib.mkIf (hardware "gpuNvidia") {
+    nvidia = lib.mkIf (configuration.hardware "gpuNvidia") {
       modesetting.enable = true;
       nvidiaSettings = false;
       open = true;

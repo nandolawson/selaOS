@@ -1,7 +1,7 @@
-{ config, branch, pkgs, self, ... }:
+{ config, configuration, pkgs, self, ... }:
 {
     boot.plymouth = {
-      enable = builtins.elem branch [ "insider" "release" ];
+      enable = builtins.elem configuration.branch [ "insider" "release" ];
       extraConfig = "";
       font = "${pkgs.dejavu_fonts.minimal}/share/fonts/truetype/DejaVuSans.ttf";
       logo = "${self}/assets/logo.svg";

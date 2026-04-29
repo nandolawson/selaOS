@@ -1,6 +1,6 @@
 {
   lib,
-  hardware,
+  configuration,
   pkgs,
   ...
 }:
@@ -35,8 +35,8 @@
     growPartition = false;
     hardwareScan = true;
     kernelModules = [ "tcp_bbr" ]
-    ++ lib.optionals (hardware "cpuAmd") [ "kvm_amd" ]
-    ++ lib.optionals (hardware "cpuIntel") [ "kvm_intel" ];
+    ++ lib.optionals (configuration.hardware "cpuAmd") [ "kvm_amd" ]
+    ++ lib.optionals (configuration.hardware "cpuIntel") [ "kvm_intel" ];
     kernelPackages = pkgs.linuxPackages_zen;
     kernelPatches = [ ];
     kernelParams = [
@@ -51,8 +51,8 @@
       "rd.systemd.show_status=false"
       "splash"
     ]
-    ++ lib.optionals (hardware "gpuAmd") [ "amdgpu.ppfeaturemask=0xffffffff" ]
-    ++ lib.optionals (hardware "gpuNvidia") [ "nvidia_drm.modeset=1" ];
+    ++ lib.optionals (configuration.hardware "gpuAmd") [ "amdgpu.ppfeaturemask=0xffffffff" ]
+    ++ lib.optionals (configuration.hardware "gpuNvidia") [ "nvidia_drm.modeset=1" ];
     nixStoreMountOpts = [
       "ro"
       "nodev"

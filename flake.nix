@@ -15,13 +15,15 @@
         system = "x86_64-linux";
         specialArgs = {
           inherit self name version;
-          branch = let
-            envBranch = builtins.getEnv "BRANCH";
-          in
-            if envBranch == "release" || envBranch == "insider" || envBranch == "developer"
-            then envBranch
-            else "release";
-          hardware = flag: builtins.match ".*${flag}.*" (builtins.getEnv "HARDWARE") != null;
+          configuration = {
+            branch = let
+              envBranch = builtins.getEnv "BRANCH";
+            in
+              if envBranch == "release" || envBranch == "insider" || envBranch == "developer"
+              then envBranch
+              else "release";
+            hardware = flag: builtins.match ".*${flag}.*" (builtins.getEnv "HARDWARE") != null;
+          };
         };
         modules = [
           { nixpkgs.config.allowUnfree = true; }

@@ -1,11 +1,11 @@
-{ config, lib, hardware, ... }:
+{ config, lib, configuration, ... }:
 
 {
     hardware.cpu = {
-        amd = lib.mkIf (hardware "cpuAmd") {
+        amd = lib.mkIf (configuration.hardware "cpuAmd") {
             updateMicrocode = config.hardware.enableRedistributableFirmware;
         };
-        intel = lib.mkIf (hardware "cpuIntel") {
+        intel = lib.mkIf (configuration.hardware "cpuIntel") {
             npu.enable = false;
             updateMicrocode = config.hardware.enableRedistributableFirmware;
         };
