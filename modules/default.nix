@@ -23,7 +23,19 @@ assert (configuration.hardware "gpuAmd" || configuration.hardware "gpuIntel" || 
       ./zramSwap.nix
     ];
   console.keyMap = "de";
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix = {
+    settings = {
+      auto-optimise-store = true;
+      keep-outputs = false;
+      keep-derivations = false;
+      experimental-features = [ "nix-command" "flakes" ];
+    };
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d";
+    };
+  };
   security.rtkit.enable = true;
   swapDevices = [
     {
