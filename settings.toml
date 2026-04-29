@@ -1,3 +1,5 @@
 removedPlasma6Settings = [
-    "kcm_joystick"
+    "activities"
+    "feedback"
+    "joystick"
 ]
