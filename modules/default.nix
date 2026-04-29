@@ -47,15 +47,10 @@ assert (configuration.hardware "gpuAmd" || configuration.hardware "gpuIntel" || 
     enable = true;
     extraPortals = [
       pkgs.kdePackages.xdg-desktop-portal-kde
-      pkgs.xdg-desktop-portal-gtk
     ];
     config = {
       common = {
         default = [ "kde" ];
-        "org.freedesktop.impl.portal.Settings" = [
-          "gtk"
-          "kde"
-        ];
       };
     };
   };
