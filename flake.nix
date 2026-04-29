@@ -13,6 +13,7 @@
       nixosConfigurations.x86_64 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {
+          settings = builtins.fromTOML (builtins.readFile ./settings.toml);
           inherit self name version;
           configuration = {
             branch = let

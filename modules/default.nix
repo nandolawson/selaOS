@@ -1,6 +1,5 @@
 {
   configuration,
-  inputs,
   pkgs,
   ...
 }:
@@ -63,7 +62,6 @@ assert (configuration.hardware "gpuAmd" || configuration.hardware "gpuIntel" || 
       org.freedownloadmanager.Manager=own
   '';
   };
-  environment.etc."xdg/autostart/kcm_joystick.desktop".text = ''NoDisplay=true'';
   system.activationScripts.flatpak-overrides.text = ''
     mkdir -p /var/lib/flatpak/overrides
     for file in /etc/flatpak/overrides/*; do
