@@ -45,8 +45,18 @@ assert (configuration.hardware "gpuAmd" || configuration.hardware "gpuIntel" || 
   ];
   xdg.portal = {
     enable = true;
-    extraPortals = [ pkgs.kdePackages.xdg-desktop-portal-kde ];
+    extraPortals = [
+      pkgs.kdePackages.xdg-desktop-portal-kdePackages
+      pkgs.xdg-desktop-portal-gtk 
+    ];
     config.common.default = "kde";
+    config.groups.base = {
+      default = [ "kde" ];
+      "org.freedesktop.impl.portal.Settings" = [
+        "gtk"
+        "kde"
+      ];
+    };
   };
   programs.bash.completion.enable = true;
 }
