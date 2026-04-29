@@ -1,5 +1,5 @@
 removedPlasma6Settings = [
-    "activities"
-    "feedback"
+    "activities",
+    "feedback",
     "joystick"
 ]
