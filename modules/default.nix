@@ -47,13 +47,15 @@ assert (configuration.hardware "gpuAmd" || configuration.hardware "gpuIntel" || 
       };
     };
   };
-  environment.etc."flatpak/overrides/global".text = ''
+  environment.etc."flatpak/overrides/com.google.Chrome".text = ''
+    [Context]
+    talk-name=org.freedesktop.Flatpak;
+    talk-name=org.freedownloadmanager.Manager;
+  '';
+  environment.etc."flatpak/overrides/org.freedownloadmanager.Manager".text = ''
     [Context]
     filesystems=home;
-  '';
-  environment.etc."flatpak/overrides/com.valvesoftware.Steam".text = ''
-    [Context]
-    filesystems=!home;
+    talk-name=org.freedownloadmanager.Manager;
   '';
   system.activationScripts.flatpak-overrides.text = ''
     mkdir -p /var/lib/flatpak/overrides
