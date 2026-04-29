@@ -1,12 +1,10 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
-    nix-flatpak.url = "github:gmodena/nix-flatpak";
-    nix-software-center.url = "github:snowfallorg/nix-software-center";
   };
 
   outputs =
-    { nixpkgs, nix-flatpak, self, ... }:
+    { nixpkgs, self, ... }:
     let
       name = "selaOS";
       version = "1.0";
@@ -28,7 +26,6 @@
         };
         modules = [
           { nixpkgs.config.allowUnfree = true; }
-          nix-flatpak.nixosModules.nix-flatpak
           ./modules
           ./packages
           (

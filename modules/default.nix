@@ -62,6 +62,13 @@ assert (configuration.hardware "gpuAmd" || configuration.hardware "gpuIntel" || 
       [Session Bus Policy]
       org.freedownloadmanager.Manager=own
   '';
+    "xdg/autostart/kcm_joystick.desktop".text = ''
+      [Desktop Entry]
+      Name=Game Controller
+      NoDisplay=true
+      Type=Service
+      X-KDE-ServiceTypes=KCModule
+  '';
   };
   system.activationScripts.flatpak-overrides.text = ''
     mkdir -p /var/lib/flatpak/overrides
@@ -71,7 +78,4 @@ assert (configuration.hardware "gpuAmd" || configuration.hardware "gpuIntel" || 
       fi
     done
   '';
-  environment.systemPackages = with pkgs; [
-    inputs.nix-software-center.packages.${system}.nix-software-center
-  ];
 }
