@@ -47,19 +47,21 @@ assert (configuration.hardware "gpuAmd" || configuration.hardware "gpuIntel" || 
       };
     };
   };
-  environment.etc."flatpak/overrides/com.google.Chrome".text = ''
-    [Context]
-    filesystems=home;
-    [Session Bus Policy]
-    org.freedesktop.portal.Desktop=talk
-    org.freedownloadmanager.Manager=talk
+  environment.etc = {
+    "flatpak/overrides/com.google.Chrome".text = ''
+      [Context]
+      filesystems=home;
+      [Session Bus Policy]
+      org.freedesktop.portal.Desktop=talk
+      org.freedownloadmanager.Manager=talk
+    '';
+    "flatpak/overrides/org.freedownloadmanager.Manager".text = ''
+      [Context]
+      filesystems=home;
+      [Session Bus Policy]
+      org.freedownloadmanager.Manager=own
   '';
-  environment.etc."flatpak/overrides/org.freedownloadmanager.Manager".text = ''
-    [Context]
-    filesystems=home;
-    [Session Bus Policy]
-    org.freedownloadmanager.Manager=own
-  '';
+  };
   system.activationScripts.flatpak-overrides.text = ''
     mkdir -p /var/lib/flatpak/overrides
     for file in /etc/flatpak/overrides/*; do
@@ -68,5 +70,15 @@ assert (configuration.hardware "gpuAmd" || configuration.hardware "gpuIntel" || 
       fi
     done
   '';
-  programs.bash.completion.enable = true;
+  nixpkgs.config.packageOverrides = pkgs: {
+  nix-software-center = pkgs.callPackage (pkgs.fetchFromGitHub {
+    owner = "ljubitje";
+    repo = "nix-software-center";
+    rev = "0.1.3";
+    sha256 = "HVnDccOT6pNOXjtNMvT9T3Op4JbJm2yMBNWMUajn3vk=";
+  }) {};
+  environment.systemPackages = with pkgs; [
+    nix-software-center
+  ];
+};
 }
