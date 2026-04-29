@@ -51,6 +51,11 @@
       "rd.systemd.show_status=false"
       "splash"
     ]
+    ++ lib.optionals (configuration.branch != "developer") [
+      "quiet"
+      "rd.systemd.show_status=false"
+      "splash"
+    ]
     ++ lib.optionals (configuration.hardware "gpuAmd") [ "amdgpu.ppfeaturemask=0xffffffff" ]
     ++ lib.optionals (configuration.hardware "gpuNvidia") [ "nvidia_drm.modeset=1" ];
     nixStoreMountOpts = [

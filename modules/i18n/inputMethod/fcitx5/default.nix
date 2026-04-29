@@ -4,7 +4,9 @@
         ./settings.nix
     ];
     i18n.inputMethod.fcitx5 = {
-        addons = [ ];
+        addons = [
+            fcitx5-gtk
+        ];
         ignoreUserConfig = false;
         quickPhrase = { };
         quickPhraseFiles = { };
