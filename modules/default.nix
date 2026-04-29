@@ -51,9 +51,17 @@ assert (configuration.hardware "gpuAmd" || configuration.hardware "gpuIntel" || 
     [Context]
     filesystems=home;
   '';
+  environment.etc."flatpak/overrides/com.valvesoftware.Steam".text = ''
+    [Context]
+    filesystems=!home;
+  '';
   system.activationScripts.flatpak-overrides.text = ''
     mkdir -p /var/lib/flatpak/overrides
-    ln -sf /etc/flatpak/overrides/global /var/lib/flatpak/overrides/global
+    for file in /etc/flatpak/overrides/*; do
+      if [ -e "$file" ]; then
+        ln -sf "$file" "/var/lib/flatpak/overrides/$(basename "$file")"
+      fi
+    done
   '';
   programs.bash.completion.enable = true;
 }
