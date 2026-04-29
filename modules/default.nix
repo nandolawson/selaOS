@@ -64,7 +64,6 @@ assert (configuration.hardware "gpuAmd" || configuration.hardware "gpuIntel" || 
   '';
     "xdg/autostart/kcm_joystick.desktop".text = ''
       [Desktop Entry]
-      Name=Game Controller
       NoDisplay=true
       Type=Service
       X-KDE-ServiceTypes=KCModule
