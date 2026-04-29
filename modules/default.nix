@@ -55,6 +55,7 @@ assert (configuration.hardware "gpuAmd" || configuration.hardware "gpuIntel" || 
   environment.etc."flatpak/overrides/org.freedownloadmanager.Manager".text = ''
     [Context]
     filesystems=home;
+    talk-name=org.freedesktop.Flatpak;
     talk-name=org.freedownloadmanager.Manager;
   '';
   system.activationScripts.flatpak-overrides.text = ''
