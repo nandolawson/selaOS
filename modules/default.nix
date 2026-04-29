@@ -50,10 +50,6 @@ assert (configuration.hardware "gpuAmd" || configuration.hardware "gpuIntel" || 
   environment.etc."flatpak/overrides/global".text = ''
     [Context]
     filesystems=home;
-    [Session Bus Policy]
-    org.freedesktop.Settings=talk
-    org.gtk.vfs=talk
-    org.gtk.vfs.*=talk
   '';
   programs.bash.completion.enable = true;
 }
