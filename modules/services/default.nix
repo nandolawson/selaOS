@@ -33,5 +33,6 @@
       };
     };
     fwupd.enable = true;
+    dbus.enable = true;
   };
 }

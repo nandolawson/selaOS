@@ -55,4 +55,7 @@ assert (configuration.hardware "gpuAmd" || configuration.hardware "gpuIntel" || 
     };
   };
   programs.bash.completion.enable = true;
+  environment.systemPackages = with pkgs; [
+    kdePackages.xdg-desktop-portal-kde
+  ];
 }
