@@ -34,15 +34,15 @@ assert (configuration.hardware "gpuAmd" || configuration.hardware "gpuIntel" || 
   xdg.portal = {
     xdgOpenUsePortal = true;
     enable = true;
-    extraPortals = [ pkgs.kdePackages.xdg-desktop-portal-kde ];
+    extraPortals = [ pkgs.xdg-desktop-portal-kde ];
     config = {
       common = {
         default = [ "kde" ];
       };
     };
   };
-  programs.bash.completion.enable = true;
   environment.systemPackages = with pkgs; [
-    kdePackages.xdg-desktop-portal-kde
+    xdg-desktop-portal-kde
   ];
+  programs.bash.completion.enable = true;
 }
