@@ -62,13 +62,8 @@ assert (configuration.hardware "gpuAmd" || configuration.hardware "gpuIntel" || 
       [Session Bus Policy]
       org.freedownloadmanager.Manager=own
   '';
-    "xdg/autostart/kcm_joystick.desktop".text = ''
-      [Desktop Entry]
-      NoDisplay=true
-      Type=Service
-      X-KDE-ServiceTypes=KCModule
-  '';
   };
+  environment.etc."xdg/autostart/kcm_joystick.desktop".text = ''NoDisplay=true'';
   system.activationScripts.flatpak-overrides.text = ''
     mkdir -p /var/lib/flatpak/overrides
     for file in /etc/flatpak/overrides/*; do
