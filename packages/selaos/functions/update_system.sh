@@ -1,7 +1,7 @@
 update_system() {
     detect_hardware
     UUID_VAL=$(findmnt -no UUID /boot)
-    if sudo EFI_UUID="$UUID_VAL" HARDWARE="$HARDWARE" \
+    if sudo BRANCH="developer" EFI_UUID="$UUID_VAL" HARDWARE="$HARDWARE" \
         nixos-rebuild switch \
         --flake "github:nandolawson/selaOS?ref=developer#$(uname -m)" \
         --impure --refresh; then
