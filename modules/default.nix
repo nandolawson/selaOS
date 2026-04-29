@@ -47,10 +47,6 @@ assert (configuration.hardware "gpuAmd" || configuration.hardware "gpuIntel" || 
       };
     };
   };
-  environment.etc."xdg/applications/kcm_gamecontroller.desktop".text = ''
-    [Desktop Entry]
-    Hidden=true
-  '';
   environment.etc = {
     "flatpak/overrides/com.google.Chrome".text = ''
       [Context]
