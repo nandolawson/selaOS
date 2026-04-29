@@ -34,7 +34,7 @@ assert (configuration.hardware "gpuAmd" || configuration.hardware "gpuIntel" || 
   xdg.portal = {
     xdgOpenUsePortal = true;
     enable = true;
-    extraPortals = [ kdePackages.xdg-desktop-portal-kde ];
+    extraPortals = [ pkgs.kdePackages.xdg-desktop-portal-kde ];
     config = {
       common = {
         default = [ "kde" ];
