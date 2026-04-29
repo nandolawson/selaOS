@@ -49,14 +49,15 @@ assert (configuration.hardware "gpuAmd" || configuration.hardware "gpuIntel" || 
   };
   environment.etc."flatpak/overrides/com.google.Chrome".text = ''
     [Context]
-    talk-name=org.freedesktop.Flatpak;
-    talk-name=org.freedownloadmanager.Manager;
+    filesystems=home;
+    [Session Bus Policy]
+    org.freedownloadmanager.Manager=talk
   '';
   environment.etc."flatpak/overrides/org.freedownloadmanager.Manager".text = ''
     [Context]
     filesystems=home;
-    talk-name=org.freedesktop.Flatpak;
-    talk-name=org.freedownloadmanager.Manager;
+    [Session Bus Policy]
+    org.freedownloadmanager.Manager=own
   '';
   system.activationScripts.flatpak-overrides.text = ''
     mkdir -p /var/lib/flatpak/overrides
