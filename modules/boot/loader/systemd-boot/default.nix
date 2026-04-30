@@ -17,7 +17,7 @@
         graceful = false;
         #installDeviceTree = "with config.hardware.deviceTree; enable && name != null";
         rebootForBitlocker = false;
-        sortKey = "0-${name}";
+        sortKey = "000";
         windows = { };
         xbootldrMountPoint = null;
     };

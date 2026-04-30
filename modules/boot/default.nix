@@ -42,6 +42,7 @@
     kernelParams = [
       "lsm=landlock,lockdown,yama,apparmor,bpf"
       "lockdown=confidentiality"
+      "loglevel=7"
       "page_alloc.shuffle=1"
       "pci=pcie_bus_perf"
       "preempt=full"

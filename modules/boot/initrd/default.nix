@@ -37,6 +37,6 @@
       prepend = [ ];
       secrets = { };
       supportedFilesystems = [ "btrfs" "vfat" ];
-      verbose = false;
+      verbose = (configuration.branch == "developer");
     };
 }
