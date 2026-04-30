@@ -56,7 +56,11 @@
     ]
     ++ lib.optionals (configuration.hardware "cpuAmd") [ "amd_pstate=active" ]
     ++ lib.optionals (configuration.hardware "gpuAmd") [ "amdgpu.ppfeaturemask=0xffffffff" ]
-    ++ lib.optionals (configuration.hardware "gpuNvidia") [ "nvidia_drm.modeset=1" ];
+    ++ lib.optionals (configuration.hardware "gpuNvidia") [
+      "nvidia_drm.modeset=1"
+      "nvidia.NVreg_PreserveVideoMemoryAllocations=1" 
+      "nvidia.NVreg_TemporaryFilePath=/var/tmp"
+    ];
     nixStoreMountOpts = [
       "ro"
       "nodev"

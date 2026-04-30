@@ -21,9 +21,11 @@
       open = true;
       package = config.boot.kernelPackages.nvidiaPackages.stable;
       powerManagement = {
-        enable = false;
+        enable = true;
         finegrained = false;
       };
     };
+    nvidia.NVreg_PreserveVideoMemoryAllocations=1;
+    nvidia.NVreg_TemporaryFilePath=/var/tmp:;
   };
 }
