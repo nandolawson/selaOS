@@ -26,7 +26,6 @@
           };
         };
         modules = [
-          { nixpkgs.config.allowUnfree = true; }
           ./modules
           ./packages
           ./temp.nix

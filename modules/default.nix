@@ -1,6 +1,5 @@
 {
   configuration,
-  pkgs,
   ...
 }:
 
@@ -10,64 +9,29 @@ assert (configuration.hardware "gpuAmd" || configuration.hardware "gpuIntel" || 
   imports =
     [
       ./boot
+      ./console.nix
       ./documentation
+      ./environment
       ./hardware
       ./fileSystems.nix
       ./i18n
       ./networking.nix
       ./nix
+      ./nixpkgs
+      ./security
       ./services
       ./system
       ./systemd.nix
       ./time.nix
       ./users.nix
+      ./xdg
       ./zramSwap.nix
     ];
-  console.keyMap = "de";
-  security.rtkit.enable = true;
+
   swapDevices = [
     {
       device = "/swap/swapfile";
       size = 8192;
     }
   ];
-  xdg.portal = {
-    xdgOpenUsePortal = true;
-    enable = true;
-    extraPortals = [
-      pkgs.kdePackages.xdg-desktop-portal-kde
-      pkgs.xdg-desktop-portal-gtk
-    ];
-    config = {
-      common = {
-        default = [
-          "kde"
-          "gtk"
-        ];
-      };
-    };
-  };
-  environment.etc = {
-    "flatpak/overrides/com.google.Chrome".text = ''
-      [Context]
-      filesystems=home;
-      [Session Bus Policy]
-      org.freedesktop.portal.Desktop=talk
-      org.freedownloadmanager.Manager=talk
-    '';
-    "flatpak/overrides/org.freedownloadmanager.Manager".text = ''
-      [Context]
-      filesystems=home;
-      [Session Bus Policy]
-      org.freedownloadmanager.Manager=own
-  '';
-  };
-  system.activationScripts.flatpak-overrides.text = ''
-    mkdir -p /var/lib/flatpak/overrides
-    for file in /etc/flatpak/overrides/*; do
-      if [ -e "$file" ]; then
-        ln -sf "$file" "/var/lib/flatpak/overrides/$(basename "$file")"
-      fi
-    done
-  '';
 }

@@ -1,8 +1,7 @@
 { ... }:
 {
   imports = [
+    ./activationScripts.nix
     ./nixos.nix
   ];
-  system = {
-  };
 }
