@@ -3,5 +3,5 @@
 {
     console = {
         keyMap = "de";
-    }
+    };
 }
