@@ -3,5 +3,5 @@
 {
     security.rtkit = {
         enable = true;
-    }
+    };
 }
