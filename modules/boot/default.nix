@@ -43,13 +43,10 @@
       "lsm=landlock,lockdown,yama,apparmor,bpf"
       "lockdown=confidentiality"
       "page_alloc.shuffle=1"
-      "slub_debug=FZP"
       "pci=pcie_bus_perf"
       "preempt=full"
-      "quiet"
       "random.trust_cpu=on"
-      "rd.systemd.show_status=false"
-      "splash"
+      "slub_debug=FZP"
     ]
     ++ lib.optionals (configuration.branch != "developer") [
       "quiet"
