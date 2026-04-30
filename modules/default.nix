@@ -27,7 +27,6 @@ assert (configuration.hardware "gpuAmd" || configuration.hardware "gpuIntel" || 
       ./xdg
       ./zramSwap.nix
     ];
-
   swapDevices = [
     {
       device = "/swap/swapfile";

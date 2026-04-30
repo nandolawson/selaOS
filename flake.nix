@@ -4,7 +4,11 @@
   };
 
   outputs =
-    { nixpkgs, self, ... }:
+    {
+      nixpkgs,
+      self,
+      ...
+    }:
     let
       name = "selaOS";
       version = "1.0";
@@ -30,10 +34,10 @@
           ./packages
           ./temp.nix
           (
-            { lib, ... }:
             {
-              system.stateVersion = "25.11";
-            }
+              lib,
+              ...
+            }:
           )
         ];
       };
