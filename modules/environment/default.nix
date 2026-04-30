@@ -1,5 +1,5 @@
 { ... }:
 
 {
-    imports = [ ./etc ];
+    imports = [ ./etc.nix ];
 }
