@@ -11,7 +11,7 @@ assert builtins.getEnv "EFI_UUID" != "" || throw "EFI_UUID fehlt!";
     "/boot" = {
       device = "/dev/disk/by-uuid/${builtins.getEnv "EFI_UUID"}";
       fsType = "vfat";
-      options = [ "fmask=0022" "dmask=0022" ];
+      options = [ "fmask=0077" "dmask=0077" ];
     };
     "/home" = {
       device = "/dev/disk/by-label/${name}";

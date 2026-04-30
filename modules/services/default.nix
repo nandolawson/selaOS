@@ -5,6 +5,7 @@
       ./ananicy.nix
       ./flatpak.nix
       ./pipewire.nix
+      ./udev.nix
       ./xserver.nix
     ];
   services = {
