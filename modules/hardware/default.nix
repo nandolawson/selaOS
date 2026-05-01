@@ -25,7 +25,5 @@
         finegrained = false;
       };
     };
-    nvidia.NVreg_PreserveVideoMemoryAllocations=1;
-    nvidia.NVreg_TemporaryFilePath=/var/tmp:;
   };
 }
