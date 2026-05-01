@@ -2,7 +2,6 @@
 (
   pkgs.steam.override {
     dedicatedServer.openFirewall = true;
-    enable = true;
     remotePlay.openFirewall = true;
   }
 ) // {
