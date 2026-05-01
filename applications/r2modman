@@ -1,0 +1,15 @@
+{ pkgs }:
+(
+  pkgs.r2modman.override { }
+) // {
+  store = {
+    author = "";
+    description = {
+      short = "";
+      long = "";
+    };
+    name = "";
+    screenshots = [ "" ];
+    website = "";
+  };
+}
