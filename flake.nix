@@ -28,8 +28,7 @@
             {
               lib,
               ...
-            }: {
-            }
+            }: { system.stateVersion = "25.11"; }
           )
         ];
         specialArgs = {
@@ -50,7 +49,6 @@
           );
         };
         system = "x86_64-linux";
-        system.stateVersion = "25.11";
       };
     } // (
       flake-utils.lib.eachDefaultSystem (
