@@ -1,53 +1,13 @@
-{
-  description = "selaOS";
-
-  inputs = {
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-  };
-
-  outputs = {
-    nixpkgs-stable,
-    nixpkgs-unstable,
-    self,
-    ...
-  }:
+{ inputs, ... }: {
+  perSystem = { pkgs, system, ... }: 
   let
-    name = "selaOS";
-    version = "1.0";
-    system = "x86_64-linux";
-    pkgs-unstable = import nixpkgs-unstable {
+    pkgs-unstable = import inputs.nixpkgs-unstable {
       inherit system;
       config.allowUnfree = true;
     };
   in
   {
-    nixosConfigurations.x86_64 = nixpkgs-stable.lib.nixosSystem {
-      inherit system;
-      modules = [
-        ./modules
-        ./packages
-        ./temp.nix
-        ({ lib, ... }: { system.stateVersion = "25.11"; })
-      ];
-      specialArgs = {
-        configuration = {
-          branch = let
-            envBranch = builtins.getEnv "BRANCH";
-          in
-            if envBranch == "developer" || envBranch == "insider" || envBranch == "release"
-            then envBranch
-            else "release";
-          
-          hardware = flag: builtins.match ".*${flag}.*" (
-            builtins.getEnv "HARDWARE"
-          ) != null;
-        };
-        inherit name self version;
-        settings = builtins.fromTOML (builtins.readFile ./settings.toml);
-      };
-    };
-    packages.${system} = pkgs-unstable.lib.mapAttrs' (
+    packages = pkgs-unstable.lib.mapAttrs' (
       name: type: pkgs-unstable.lib.nameValuePair (
         pkgs-unstable.lib.removeSuffix ".nix" name
       ) (
