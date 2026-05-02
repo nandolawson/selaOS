@@ -13,5 +13,6 @@
       '';
     }))
   ];
-
+  virtualisation.docker.enable = true;
+  users.users.nando.extraGroups = [ "docker" ];
 }
