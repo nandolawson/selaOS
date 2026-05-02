@@ -1,20 +1,26 @@
-{ inputs, ... }: {
+{
+  inputs,
+  ...
+}: {
   perSystem = { pkgs, system, ... }: 
   let
-    pkgs-unstable = import inputs.nixpkgs-unstable {
+    pkgs = import inputs.nixpkgs-unstable {
       inherit system;
       config.allowUnfree = true;
     };
   in
   {
-    packages = pkgs-unstable.lib.mapAttrs' (
-      name: type: pkgs-unstable.lib.nameValuePair (
-        pkgs-unstable.lib.removeSuffix ".nix" name
+    packages = pkgs.lib.mapAttrs' (
+      name:
+      type: pkgs.lib.nameValuePair (
+        pkgs.lib.removeSuffix ".nix" name
       ) (
         import (./applications + "/${name}") {
-          pkgs = pkgs-unstable;
+          inherit pkgs;
         }
       )
-    ) (builtins.readDir ./applications);
+    ) (
+      builtins.readDir ./applications
+    );
   };
 }
