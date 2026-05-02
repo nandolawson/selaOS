@@ -11,7 +11,7 @@
       name: type: pkgs-unstable.lib.nameValuePair (
         pkgs-unstable.lib.removeSuffix ".nix" name
       ) (
-        import (../applications + "/${name}") {
+        import (./applications + "/${name}") {
           pkgs = pkgs-unstable;
         }
       )
