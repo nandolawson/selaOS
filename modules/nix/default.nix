@@ -1,10 +1,17 @@
-{ self, ... }:
+{ configuration, ... }:
 {
     imports = [
         ./gc.nix
         ./settings.nix
     ];
     nix = {
-        registry.selaos.flake = self;
+        registry = {
+            repository.to = {
+                shallow = !(configuration.branch == "developer");
+                type = "git";
+                url = "https://github.com/nandolawson/selaOS.git";
+            };
+        };
+        settings.flake-registry-only = !(configuration.branch == "developer");
     };
 }
