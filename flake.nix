@@ -13,7 +13,7 @@
 
       imports = [
         ./nixosConfigurations.nix
-        ./parts/packages.nix
+        ./packages.nix
       ];
     };
 }
