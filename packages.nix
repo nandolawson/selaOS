@@ -15,6 +15,6 @@
           pkgs = pkgs-unstable;
         }
       )
-    ) (builtins.readDir ../applications);
+    ) (builtins.readDir ./applications);
   };
 }
