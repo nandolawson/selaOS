@@ -12,6 +12,6 @@
                 url = "https://github.com/nandolawson/selaOS.git";
             };
         };
-        settings.flake-registry-only = !(configuration.branch == "developer");
+        #settings.flake-registry-only = !(configuration.branch == "developer");
     };
 }
