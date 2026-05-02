@@ -2,7 +2,7 @@
   inputs,
   ...
 }: {
-  perSystem = { pkgs, system, ... }: 
+  perSystem = { system, ... }: 
   let
     pkgs = import inputs.nixpkgs-unstable {
       inherit system;
