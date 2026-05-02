@@ -7,9 +7,9 @@ in
   flake.nixosConfigurations.x86_64 = inputs.nixpkgs-stable.lib.nixosSystem {
     system = "x86_64-linux";
     modules = [
-      ../modules
-      ../packages
-      ../temp.nix
+      ./modules
+      ./packages
+      ./temp.nix
       ({ lib, ... }: { system.stateVersion = "25.11"; })
     ];
     specialArgs = {
@@ -26,7 +26,7 @@ in
         ) != null;
       };
       inherit name self version;
-      settings = builtins.fromTOML (builtins.readFile ../settings.toml);
+      settings = builtins.fromTOML (builtins.readFile ./settings.toml);
     };
   };
 }
