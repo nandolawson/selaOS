@@ -1,8 +1,8 @@
-{ pkgs }:
-
+{pkgs}:
 (
-  pkgs.google-chrome.override { }
-) // {
+  pkgs.google-chrome.override {}
+)
+// {
   store = {
     author = "Google";
     description = {
@@ -10,7 +10,7 @@
       long = "";
     };
     name = "Google Chrome";
-    screenshots = [ "" ];
+    screenshots = [""];
     website = "https://google.com/chrome/";
   };
 }

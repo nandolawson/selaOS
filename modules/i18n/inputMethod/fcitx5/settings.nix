@@ -1,8 +1,7 @@
-{ ... }:
-{
-    i18n.inputMethod.fcitx5.settings = {
-        addons = { };
-        globalOptions = { };
-        inputMethod = { };
-    };
+_: {
+  i18n.inputMethod.fcitx5.settings = {
+    addons = {};
+    globalOptions = {};
+    inputMethod = {};
+  };
 }

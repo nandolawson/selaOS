@@ -1,17 +1,20 @@
-{ lib, pkgs, ... }:
-
-let
-functions = lib.concatMapStringsSep "\n" 
-  (name: ''
-    # shellcheck disable=SC1090,SC1091
-    source "${./functions/${name}.sh}"
-  '')
-  [
-    "detect_hardware"
-    "show_help"
-    "show_notification"
-    "update_system"
-  ];
+{
+  lib,
+  pkgs,
+  ...
+}: let
+  functions =
+    lib.concatMapStringsSep "\n"
+    (name: ''
+      # shellcheck disable=SC1090,SC1091
+      source "${./functions/${name}.sh}"
+    '')
+    [
+      "detect_hardware"
+      "show_help"
+      "show_notification"
+      "update_system"
+    ];
   selaos = pkgs.writeShellApplication {
     name = "selaos";
     runtimeInputs = with pkgs; [
@@ -44,7 +47,6 @@ functions = lib.concatMapStringsSep "\n"
       esac
     '';
   };
-in
-{
-  environment.systemPackages = [ selaos ];
+in {
+  environment.systemPackages = [selaos];
 }

@@ -1,6 +1,4 @@
-{ ... }:
-
-{
+_: {
   system.activationScripts = {
     flatpak-overrides.text = ''
       mkdir -p /var/lib/flatpak/overrides

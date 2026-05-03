@@ -1,8 +1,8 @@
-{ pkgs }:
-
+{pkgs}:
 (
-  pkgs.vscode.override { }
-) // {
+  pkgs.vscode.override {}
+)
+// {
   store = {
     author = "Microsoft";
     description = {
@@ -10,7 +10,7 @@
       long = "";
     };
     name = "Visual Studio Code";
-    screenshots = [ "" ];
+    screenshots = [""];
     website = "https://https://code.visualstudio.com/";
   };
 }

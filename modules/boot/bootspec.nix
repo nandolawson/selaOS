@@ -1,8 +1,7 @@
- { pkgs, ... }:
- {
-   boot.bootspec = {
-      enableValidation = false;
-      extensions = { };
-      package = pkgs.bootspec;
-    };
- }
+{pkgs, ...}: {
+  boot.bootspec = {
+    enableValidation = false;
+    extensions = {};
+    package = pkgs.bootspec;
+  };
+}

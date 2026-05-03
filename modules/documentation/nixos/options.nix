@@ -1,7 +1,6 @@
-{ ... }:
-{
-    documentation.nixos.options = {
-        splitBuild = true;
-        warningsAreErrors = true;
-    };
+_: {
+  documentation.nixos.options = {
+    splitBuild = true;
+    warningsAreErrors = true;
+  };
 }

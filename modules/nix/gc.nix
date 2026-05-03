@@ -1,7 +1,6 @@
-{ ... }:
-{
-    nix.gc = {
-        automatic = true;
-        dates = "daily";
-    };
+_: {
+  nix.gc = {
+    automatic = true;
+    dates = "daily";
+  };
 }

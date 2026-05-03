@@ -1,12 +1,11 @@
-{ pkgs, ... }:
-{
-    imports = [ ./config.nix ];
-    xdg.portal = {
-        xdgOpenUsePortal = true;
-        enable = true;
-        extraPortals = [
-            pkgs.kdePackages.xdg-desktop-portal-kde
-            pkgs.xdg-desktop-portal-gtk
-        ];
-    };
+{pkgs, ...}: {
+  imports = [./config.nix];
+  xdg.portal = {
+    xdgOpenUsePortal = true;
+    enable = true;
+    extraPortals = [
+      pkgs.kdePackages.xdg-desktop-portal-kde
+      pkgs.xdg-desktop-portal-gtk
+    ];
+  };
 }

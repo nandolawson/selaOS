@@ -1,13 +1,15 @@
-{ lib, pkgs, ... }:
 {
-  imports =
-    [
-      ./ananicy.nix
-      ./flatpak.nix
-      ./pipewire.nix
-      ./udev.nix
-      ./xserver.nix
-    ];
+  lib,
+  pkgs,
+  ...
+}: {
+  imports = [
+    ./ananicy.nix
+    ./flatpak.nix
+    ./pipewire.nix
+    ./udev.nix
+    ./xserver.nix
+  ];
   services = {
     desktopManager.plasma6 = {
       enable = true;
@@ -22,9 +24,9 @@
       autoNumlock = false;
       enable = true;
       enableHidpi = true;
-      extraPackages = [ ];
+      extraPackages = [];
       #package = pkgs.kdePackages.sddm;
-      settings = { };
+      settings = {};
       setupScript = "";
       stopScript = "";
       #theme = "";

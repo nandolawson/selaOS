@@ -1,11 +1,10 @@
-{ ... }:
-{
-    services.pipewire = {
-        alsa = {
-            enable = true;
-            support32Bit = true;
-        };
-        enable = true;
-        pulse.enable = true;
+_: {
+  services.pipewire = {
+    alsa = {
+      enable = true;
+      support32Bit = true;
     };
+    enable = true;
+    pulse.enable = true;
+  };
 }

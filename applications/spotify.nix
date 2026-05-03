@@ -1,8 +1,8 @@
-{ pkgs }:
-
+{pkgs}:
 (
   pkgs.spotify.override {}
-) // {
+)
+// {
   store = {
     author = "";
     description = {
@@ -10,7 +10,7 @@
       long = "";
     };
     name = "";
-    screenshots = [ "" ];
+    screenshots = [""];
     website = "";
   };
 }

@@ -1,10 +1,11 @@
-{ pkgs }:
+{pkgs}:
 (
   pkgs.steam.override {
     dedicatedServer.openFirewall = true;
     remotePlay.openFirewall = true;
   }
-) // {
+)
+// {
   store = {
     author = "";
     description = {
@@ -12,7 +13,7 @@
       long = "";
     };
     name = "";
-    screenshots = [ "" ];
+    screenshots = [""];
     website = "";
   };
 }

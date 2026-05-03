@@ -1,7 +1,8 @@
-{ pkgs }:
+{pkgs}:
 (
-  pkgs.teamspeak6-client.override { }
-) // {
+  pkgs.teamspeak6-client.override {}
+)
+// {
   store = {
     author = "";
     description = {
@@ -9,7 +10,7 @@
       long = "";
     };
     name = "";
-    screenshots = [ "" ];
+    screenshots = [""];
     website = "";
   };
 }

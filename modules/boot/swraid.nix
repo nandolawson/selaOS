@@ -1,7 +1,6 @@
-{ ... }:
-{
-    boot.swraid = {
-      enable = false;
-      mdadmConf = "";
-    };
+_: {
+  boot.swraid = {
+    enable = false;
+    mdadmConf = "";
+  };
 }

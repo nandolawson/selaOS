@@ -1,11 +1,10 @@
-{ ... }:
-{
-    xdg.portal.config = {
-        common = {
-            default = [
-                "kde"
-                "gtk"
-            ];
-        };
-     };
+_: {
+  xdg.portal.config = {
+    common = {
+      default = [
+        "kde"
+        "gtk"
+      ];
+    };
+  };
 }

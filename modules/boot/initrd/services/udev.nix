@@ -1,8 +1,7 @@
-{ ... }:
-{
-        boot.initrd.services.udev = {
-          binPackages = [ ];
-          packages = [ ];
-          rules = "";
-        };
+_: {
+  boot.initrd.services.udev = {
+    binPackages = [];
+    packages = [];
+    rules = "";
+  };
 }

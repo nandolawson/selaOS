@@ -1,6 +1,4 @@
-{ ... }:
-
-{
+_: {
   environment.etc = {
     "flatpak/overrides/com.google.Chrome".text = ''
       [Context]
@@ -14,6 +12,6 @@
       filesystems=home;
       [Session Bus Policy]
       org.freedownloadmanager.Manager=own
-  '';
+    '';
   };
 }

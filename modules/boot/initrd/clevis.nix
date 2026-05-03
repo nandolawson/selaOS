@@ -1,9 +1,8 @@
-{ pkgs, ... }:
-{
-    boot.initrd.clevis = {
-        devices = { };
-        enable = false;
-        package = pkgs.clevis;
-        useTang = false;
-    };
+{pkgs, ...}: {
+  boot.initrd.clevis = {
+    devices = {};
+    enable = false;
+    package = pkgs.clevis;
+    useTang = false;
+  };
 }

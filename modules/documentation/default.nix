@@ -1,9 +1,7 @@
-{ ... }:
-{
-    imports = [
-        ./nixos
-    ];
-    documentation = {
-
-    };
+{...}: {
+  imports = [
+    ./nixos
+  ];
+  documentation = {
+  };
 }

@@ -1,10 +1,9 @@
-{ pkgs, ... }:
-{
-    services.udev = {
-        enable = true;
-        extraHwdb = "";
-        extraRules = "";
-        packages = [ pkgs.libfido2 ];
-        path = [ ];
-    };
+{pkgs, ...}: {
+  services.udev = {
+    enable = true;
+    extraHwdb = "";
+    extraRules = "";
+    packages = [pkgs.libfido2];
+    path = [];
+  };
 }

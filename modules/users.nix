@@ -1,11 +1,10 @@
-{ ... }:
-{
-    users = {
-        allowNoPasswordLogin = false;
-        defaultUserHome = "/home";
-        defaultUserShell = "/bin/sh";
-        enforceIdUniqueness = true;
-        mutableUsers = true;
-        groups = { };
-    };
+_: {
+  users = {
+    allowNoPasswordLogin = false;
+    defaultUserHome = "/home";
+    defaultUserShell = "/bin/sh";
+    enforceIdUniqueness = true;
+    mutableUsers = true;
+    groups = {};
+  };
 }

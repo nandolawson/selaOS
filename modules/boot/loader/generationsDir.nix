@@ -1,7 +1,6 @@
-{ ... }:
-{
-    boot.loader.generationsDir = {
-       copyKernels = true;
-       enable = false;
-    };
+_: {
+  boot.loader.generationsDir = {
+    copyKernels = true;
+    enable = false;
+  };
 }

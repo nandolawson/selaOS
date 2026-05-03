@@ -1,7 +1,6 @@
-{ ... }:
-{
-    time = {
-        hardwareClockInLocalTime = false;
-        timeZone = "Europe/Berlin";
-    };
+_: {
+  time = {
+    hardwareClockInLocalTime = false;
+    timeZone = "Europe/Berlin";
+  };
 }

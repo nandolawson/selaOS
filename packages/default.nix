@@ -1,7 +1,5 @@
-{ ... }:
-{ 
-    imports =
-    [
-        ./selaos
-    ];
+{...}: {
+  imports = [
+    ./selaos
+  ];
 }

@@ -1,9 +1,8 @@
-{ ... }:
-{
-    boot.binfmt = {
-      addEmulatedSystemsToNixSandbox = false;
-      emulatedSystems = [ ];
-      preferStaticEmulators = false;
-      registrations = { };
-    };
+_: {
+  boot.binfmt = {
+    addEmulatedSystemsToNixSandbox = false;
+    emulatedSystems = [];
+    preferStaticEmulators = false;
+    registrations = {};
+  };
 }

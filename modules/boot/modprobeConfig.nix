@@ -1,7 +1,6 @@
-{ ... }:
-{
-    boot.modprobeConfig = {
-      enable = true;
-      useUbuntuModuleBlacklist = true;
-    };
+_: {
+  boot.modprobeConfig = {
+    enable = true;
+    useUbuntuModuleBlacklist = true;
+  };
 }

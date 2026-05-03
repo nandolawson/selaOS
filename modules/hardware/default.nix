@@ -4,14 +4,12 @@
   configuration,
   pkgs,
   ...
-}:
-{
-  imports =
-    [
-      ./bluetooth.nix
-      ./cpu.nix
-      ./graphics.nix
-    ];
+}: {
+  imports = [
+    ./bluetooth.nix
+    ./cpu.nix
+    ./graphics.nix
+  ];
   hardware = {
     enableAllFirmware = true;
     enableRedistributableFirmware = config.hardware.enableAllFirmware;

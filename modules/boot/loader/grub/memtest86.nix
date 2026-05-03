@@ -1,7 +1,6 @@
-{ ... }:
-{
-    boot.loader.grub.memtest86 = {
-        enable = true;
-        params = [ ];
-    };
+_: {
+  boot.loader.grub.memtest86 = {
+    enable = true;
+    params = [];
+  };
 }

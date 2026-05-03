@@ -1,7 +1,5 @@
-{ ... }:
-
-{
-    console = {
-        keyMap = "de";
-    };
+_: {
+  console = {
+    keyMap = "de";
+  };
 }

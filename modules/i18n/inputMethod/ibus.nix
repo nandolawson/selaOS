@@ -1,7 +1,6 @@
-{ ... }:
-{
-    i18n.inputMethod.ibus = {
-        engines = [ ];
-        panel = null;
-    };
+_: {
+  i18n.inputMethod.ibus = {
+    engines = [];
+    panel = null;
+  };
 }

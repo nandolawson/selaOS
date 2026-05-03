@@ -1,7 +1,8 @@
-{ pkgs }:
+{pkgs}:
 (
-  pkgs.gimp.override { }
-) // {
+  pkgs.gimp.override {}
+)
+// {
   store = {
     author = "";
     description = {
@@ -9,7 +10,7 @@
       long = "";
     };
     name = "";
-    screenshots = [ "" ];
+    screenshots = [""];
     website = "";
   };
 }

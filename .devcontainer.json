@@ -1,0 +1,40 @@
+{
+    "image": "debian:stable-slim",
+    "features": {
+        "ghcr.io/devcontainers/features/github-cli:1": {},
+        "ghcr.io/devcontainers/features/nix:1": {
+            "packages": "nixd,statix,alejandra,nixd,deadnix"
+        }
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "tamasfe.even-better-toml",
+                "jnoortheen.nix-ide"
+            ],
+            "settings": {
+                "editor.formatOnSave": true,
+                "nix.enableLanguageServer": true,
+                "nix.serverPath": "nixd",
+                "nix.formatterPath": "alejandra",
+                "nix.serverSettings": {
+                    "nixd": {
+                        "diagnostic": {
+                            "suppress": [],
+                            "additional": [
+                                "nil"
+                            ]
+                        },
+                        "options": {
+                            "enable": true,
+                            "target": {
+                                "args": [],
+                                "installable": ""
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

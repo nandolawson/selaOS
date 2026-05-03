@@ -1,10 +1,9 @@
-{ config, ... }:
-{
-    boot.uki = {
-      #configFile
-      #name
-      #settings
-      tries = null;
-      version = config.system.image.version;
-    };
+{config, ...}: {
+  boot.uki = {
+    #configFile
+    #name
+    #settings
+    tries = null;
+    inherit (config.system.image) version;
+  };
 }

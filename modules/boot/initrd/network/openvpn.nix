@@ -1,7 +1,6 @@
-{ ... }:
-{
-        boot.initrd.network.openvpn = {
-          configuration = "";
-          enable = false;
-        };
-    }
+_: {
+  boot.initrd.network.openvpn = {
+    configuration = "";
+    enable = false;
+  };
+}

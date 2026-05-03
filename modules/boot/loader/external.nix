@@ -1,7 +1,6 @@
-{ ... }:
-{
-    boot.loader.external = {
-        enable = false;
-        installHook = "";
-    };
+_: {
+  boot.loader.external = {
+    enable = false;
+    installHook = "";
+  };
 }
